@@ -1,4 +1,4 @@
-import { getAuthHeader } from "@/auth/auth-headers";
+import { getAuthHeader } from "@/utils/auth";
 import axios, {
   AxiosRequestConfig,
   AxiosRequestHeaders,
@@ -9,7 +9,7 @@ import chalk from "chalk";
 import { StatusCodes } from "http-status-codes";
 import { BaseResponse } from "./types";
 import store from "store2";
-import { authSecret } from "@/crypto";
+import { authSecret } from "@/constant/crypto";
 
 interface IPendingVal {
   controller: AbortController;

@@ -9,7 +9,7 @@ import 'antd/dist/reset.css';
 import "./index.css";
 
 const themeConfig: ThemeConfig = {
-  algorithm: [],
+  algorithm: [compactAlgorithm],
   token: {},
   components: {
     Button: {},

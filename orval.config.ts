@@ -20,7 +20,7 @@ export default defineConfig({
         },
         header: (info) =>
           [
-            `此类型文件由swagger解析自动生成，请勿修改`,
+            "此类型文件由swagger解析自动生成，请勿修改",
             "<==================================>",
             info.title,
             ...(info.version ? [`OpenAPI spec version: ${info.version}`] : []),
