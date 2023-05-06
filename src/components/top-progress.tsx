@@ -6,12 +6,11 @@ import { useEffect } from "react";
 const TopProgress = (props: React.PropsWithChildren) => {
 	const { children = null } = props;
 	const location = useLocation();
+	NProgress.configure({ showSpinner: false });
+	NProgress.start();
 
 	useEffect(() => {
-		NProgress.start();
-		return () => {
-			NProgress.done();
-		};
+		NProgress.done();
 	}, [location]);
 
 	return <>{children}</>;
