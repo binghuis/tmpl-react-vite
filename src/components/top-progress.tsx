@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const TopProgress = (props: React.PropsWithChildren) => {
 	const { children = null } = props;

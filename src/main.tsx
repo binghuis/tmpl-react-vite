@@ -1,12 +1,12 @@
+import { StyleProvider } from "@ant-design/cssinjs";
+import { ConfigProvider, ThemeConfig, theme } from "antd";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ConfigProvider, theme, ThemeConfig } from "antd";
-import { StyleProvider } from "@ant-design/cssinjs";
 const { compactAlgorithm } = theme;
-import { Routes } from '@generouted/react-router'
+import { Routes } from "@generouted/react-router";
 
-import 'antd/dist/reset.css';
 import "./index.css";
+import "antd/dist/reset.css";
 
 const themeConfig: ThemeConfig = {
   algorithm: [compactAlgorithm],
@@ -20,8 +20,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <StyleProvider hashPriority="high">
       <ConfigProvider theme={themeConfig}>
-      <Routes />
+        <Routes />
       </ConfigProvider>
     </StyleProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
