@@ -28,6 +28,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@ant-design/colors": "^7.0.0",
     "@ant-design/cssinjs": "^1.9.1",
     "@faker-js/faker": "^7.6.0",
     "@types/crypto-js": "^4.1.1",
