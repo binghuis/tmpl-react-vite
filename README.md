@@ -23,7 +23,7 @@
 │  ├─ styles                    # 全局样式
 │  ├─ types                     # 类型管理
 │  ├─ utils                     # 工具封装
-│  └─  router.ts                # 自动生成产物：约定式路由相关
+│  └─ router.ts                 # 自动生成产物：约定式路由相关
 ├─ orval.config.ts              # 配置产物 openapi/__service__
 └─ rome.json                    # formatter & linter
 ```
