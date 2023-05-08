@@ -23,7 +23,7 @@ interface InternalItem extends ItemBase {
 
 type Item = InternalItem | LeafItem;
 
-interface MenuBarProps {
+export interface MenuBarProps {
   items: Item[];
 }
 

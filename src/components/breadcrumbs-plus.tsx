@@ -1,28 +1,29 @@
 import { Path } from '@/router';
-import { Breadcrumb, Divider } from 'antd';
+import { Breadcrumb } from 'antd';
 import { ItemType } from 'antd/es/breadcrumb/Breadcrumb';
 import { Link } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { BreadcrumbComponentType } from 'use-react-router-breadcrumbs/dist/index';
 
-interface BreadcrumbsPlusProps {
+export interface BreadcrumbPlusProps {
   routes: { path: Path; breadcrumb: string | BreadcrumbComponentType }[];
 }
-function itemRender(
+
+const itemRender = (
   item: ItemType,
   params: Record<string, unknown>,
   items: ItemType[],
   paths: string[],
-) {
+) => {
   const last = items.indexOf(item) === items.length - 1;
   return last ? (
     <span>{item.title}</span>
   ) : (
     <Link to={paths.join('/')}>{item.title}</Link>
   );
-}
+};
 
-const BreadcrumbsPlus = (props: BreadcrumbsPlusProps) => {
+const BreadcrumbPlus = (props: BreadcrumbPlusProps) => {
   const { routes } = props;
   const breadcrumbs = useBreadcrumbs(routes, { disableDefaults: true });
 
@@ -43,4 +44,4 @@ const BreadcrumbsPlus = (props: BreadcrumbsPlusProps) => {
   return <>{renderBreadcrumbs()}</>;
 };
 
-export default BreadcrumbsPlus;
+export default BreadcrumbPlus;
