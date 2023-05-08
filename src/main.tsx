@@ -19,7 +19,7 @@ const defaultData: ThemeData = {
 };
 
 const themeConfig: ThemeConfig = {
-  algorithm: [compactAlgorithm],
+  algorithm: [],
   token: {
     colorPrimary: defaultData.colorPrimary,
     borderRadius: defaultData.borderRadius,

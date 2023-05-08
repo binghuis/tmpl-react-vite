@@ -9,8 +9,4 @@ export const MenuBarItems: MenuBarProps['items'] = [
     label: 'Demo',
     path: '/demo',
   },
-  {
-    label: 'Login',
-    path: '/login',
-  },
 ];

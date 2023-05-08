@@ -6,7 +6,7 @@ import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { MenuBarItems } from '@/constant/menu-bar-items';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
-import { Divider, Image, Layout, Watermark } from 'antd';
+import { Image, Layout, Watermark } from 'antd';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { useEffect } from 'react';
@@ -27,6 +27,10 @@ function App() {
     NProgress.done();
   }, [location]);
 
+  if (location.pathname === '/login') {
+    return <Outlet />;
+  }
+
   return (
     <Layout className="w-screen h-screen">
       <Layout.Header className="site-header h-14 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
@@ -40,11 +44,7 @@ function App() {
       <Watermark content={`${user.id}`}>
         <Layout className='bg-gray-100'>
           <ResizePane
-            leftPane={
-              <Layout.Sider>
-                <MenuBar items={MenuBarItems} />
-              </Layout.Sider>
-            }
+            leftPane={<MenuBar items={MenuBarItems} />}
             leftPaneClassName=""
             rightPane={
               <Layout className="ml-3 mr-3 mt-2 mb-1 bg-white">
