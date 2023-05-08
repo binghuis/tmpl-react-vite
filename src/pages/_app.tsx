@@ -1,14 +1,12 @@
 import Logo from '@/assets/react.svg';
-import { IconUserCircle } from '@tabler/icons-react';
-import { Image, Layout, Menu } from 'antd';
-import { Outlet } from 'react-router-dom';
-
 import BreadcrumbsPlus from '@/components/breadcrumbs-plus';
 import MenuBar from '@/components/menu-bar';
 import ResizePane from '@/components/resize-pane';
 import TopProgress from '@/components/top-progress';
 import iHttp from '@/service/http';
+import { Image, Layout } from 'antd';
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
