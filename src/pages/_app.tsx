@@ -4,7 +4,7 @@ import MenuBar from '@/components/menu-bar';
 import ResizePane from '@/components/resize-pane';
 import TopProgress from '@/components/top-progress';
 import iHttp from '@/service/http';
-import { Image, Layout } from 'antd';
+import { Divider, Image, Layout } from 'antd';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ function App() {
   }, []);
   return (
     <Layout className="w-screen h-screen">
-      <Layout.Header className="site-header h-14 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
+      <Layout.Header className="site-header h-12 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
         <div
           className="w-44 h-full cursor-pointer flex items-center"
           // onClick={() => {}}

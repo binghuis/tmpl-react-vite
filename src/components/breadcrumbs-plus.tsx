@@ -1,5 +1,5 @@
 import { Path } from '@/router';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Divider } from 'antd';
 import { ItemType } from 'antd/es/breadcrumb/Breadcrumb';
 import { Link } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
@@ -31,12 +31,15 @@ const BreadcrumbsPlus = (props: BreadcrumbsPlusProps) => {
       return null;
     }
     return (
-      <Breadcrumb
-        itemRender={itemRender}
-        items={breadcrumbs.map(({ match, breadcrumb }, i) => {
-          return { title: breadcrumb, path: match.pathname };
-        })}
-      />
+      <>
+        <Breadcrumb
+          itemRender={itemRender}
+          items={breadcrumbs.map(({ match, breadcrumb }, i) => {
+            return { title: breadcrumb, path: match.pathname };
+          })}
+        />
+        <Divider className='my-1' />
+      </>
     );
   };
 
