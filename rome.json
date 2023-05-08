@@ -3,16 +3,29 @@
 	"organizeImports": {
 		"enabled": true
 	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
 		}
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "space",
-		"indentSize": 2
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"useKeyWithClickEvents": "off"
+			},
+			"complexity": {},
+			"correctness": {},
+			"performance": {},
+			"security": {},
+			"style": {},
+			"suspicious": {}
+		}
 	},
 	"files": {
 		"ignore": [

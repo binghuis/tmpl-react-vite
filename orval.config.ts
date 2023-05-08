@@ -1,27 +1,27 @@
-import { defineConfig } from "orval";
+import { defineConfig } from 'orval';
 
-const INPUT = "./src/openapi/spec.yaml";
-const URL = "";
+const INPUT = './src/openapi/spec.yaml';
+const URL = '';
 
 export default defineConfig({
   swagger: {
     output: {
-      workspace: "src/openapi",
-      target: "./__service__/swagger.ts",
-      client: "axios",
-      mode: "split",
+      workspace: 'src/openapi',
+      target: './__service__/swagger.ts',
+      client: 'axios',
+      mode: 'split',
       mock: true,
       clean: true,
       override: {
-        title: () => "OpenApi",
+        title: () => 'OpenApi',
         mutator: {
-          path: "./custom-axios.ts",
-          name: "ax",
+          path: './custom-axios.ts',
+          name: 'ax',
         },
         header: (info) =>
           [
-            "此类型文件由swagger解析自动生成，请勿修改",
-            "<==================================>",
+            '此类型文件由swagger解析自动生成，请勿修改',
+            '<==================================>',
             info.title,
             ...(info.version ? [`OpenAPI spec version: ${info.version}`] : []),
             ...(info.description?.match(/.{1,120}/g) ?? []),
@@ -31,13 +31,13 @@ export default defineConfig({
           //   suffix: 'DTO',
           // },
           responses: {
-            suffix: "Response",
+            suffix: 'Response',
           },
           parameters: {
-            suffix: "Params",
+            suffix: 'Params',
           },
           requestBodies: {
-            suffix: "Payload",
+            suffix: 'Payload',
           },
         },
       },
@@ -46,7 +46,7 @@ export default defineConfig({
       target: URL ? URL : INPUT,
     },
     hooks: {
-      afterAllFilesWrite: "prettier --write",
+      afterAllFilesWrite: 'prettier --write',
     },
   },
 });

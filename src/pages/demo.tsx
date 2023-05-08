@@ -1,9 +1,9 @@
-import { Link } from "@/router";
+import { Link } from '@/router';
 
 const DemoPage = () => {
   return (
     <div>
-      <Link to={"/"}>Demo</Link>
+      <Link to={'/'}>Demo</Link>
     </div>
   );
 };

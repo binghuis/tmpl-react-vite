@@ -1,6 +1,6 @@
-import { StorageKeys } from "@/constant/storage";
-import { StateCreator, create } from "zustand";
-import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { StorageKeys } from '@/constant/storage';
+import { StateCreator, create } from 'zustand';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 interface State {
   token: string;
@@ -22,7 +22,7 @@ const middlewares = (initializer: StateCreator<State>) =>
 
 export const useAuthStore = create<State>()(
   middlewares(() => ({
-    token: "",
+    token: '',
     user: {},
   })),
 );

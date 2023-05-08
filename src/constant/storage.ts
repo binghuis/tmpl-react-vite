@@ -1,3 +1,3 @@
 export enum StorageKeys {
-	Auth = "auth",
+  Auth = 'auth',
 }

@@ -1,8 +1,8 @@
-import Secret from "@/utils/crypto";
-import { MD5 } from "crypto-js";
+import Secret from '@/utils/crypto';
+import { MD5 } from 'crypto-js';
 
 enum CryptoKeys {
-	Auth = "auth",
+  Auth = 'auth',
 }
 
 const authSecretKey = MD5(CryptoKeys.Auth).toString();

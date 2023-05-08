@@ -1,12 +1,12 @@
-import Logo from "@/assets/react.svg";
-import { IconUserCircle } from "@tabler/icons-react";
-import { Image, Layout, Menu } from "antd";
-import { Outlet } from "react-router-dom";
+import Logo from '@/assets/react.svg';
+import { IconUserCircle } from '@tabler/icons-react';
+import { Image, Layout, Menu } from 'antd';
+import { Outlet } from 'react-router-dom';
 
-import ResizePane from "@/components/resize-pane";
-import TopProgress from "@/components/top-progress";
-import iHttp from "@/service/http";
-import { useEffect } from "react";
+import ResizePane from '@/components/resize-pane';
+import TopProgress from '@/components/top-progress';
+import iHttp from '@/service/http';
+import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
@@ -25,19 +25,19 @@ function App() {
       <Layout>
         <ResizePane
           leftPane={
-            <Layout.Sider width={"100%"}>
+            <Layout.Sider width={'100%'}>
               <Menu
                 mode="inline"
                 className="h-[calc(100vh-theme(space.14))] border-r-0 pt-1"
                 items={[
                   {
-                    label: "Dashboard",
+                    label: 'Dashboard',
                     icon: (
                       <div>
                         <IconUserCircle size={16} />
                       </div>
                     ),
-                    key: "dashboard",
+                    key: 'dashboard',
                   },
                 ]}
               />

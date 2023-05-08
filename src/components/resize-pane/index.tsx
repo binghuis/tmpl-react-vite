@@ -1,8 +1,8 @@
-import { Tooltip } from "antd";
-import classnames from "classnames";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Tooltip } from 'antd';
+import classnames from 'classnames';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import "./index.less";
+import './index.less';
 
 interface RezisePaneProps {
 	/** 左侧的内容 */
@@ -28,9 +28,9 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 	initValue = 200,
 	max = 400,
 	min = 180,
-	leftPaneClassName = "",
-	rightPaneClassName = "",
-	uniqueKey = "resize-pane",
+	leftPaneClassName = '',
+	rightPaneClassName = '',
+	uniqueKey = 'resize-pane',
 }) => {
 	const paneWidth = localStorage.getItem(uniqueKey);
 	const [leftPaneWidth, setLeftPaneWidth] = useState(
@@ -51,7 +51,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 
 		const handleMouseDown = () => {
 			setIsDraging(true);
-			document.addEventListener("mousemove", handleResize);
+			document.addEventListener('mousemove', handleResize);
 		};
 
 		const handleMouseUp = () => {
@@ -63,16 +63,16 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 					return thisleftPaneWidth;
 				}
 			});
-			document.removeEventListener("mousemove", handleResize);
+			document.removeEventListener('mousemove', handleResize);
 		};
 		// 挂载所有
-		thisElement?.addEventListener("mousedown", handleMouseDown);
-		document.addEventListener("mouseup", handleMouseUp);
+		thisElement?.addEventListener('mousedown', handleMouseDown);
+		document.addEventListener('mouseup', handleMouseUp);
 		return () => {
 			// 取消挂载时清除所有 listener
-			thisElement?.removeEventListener("mousedown", handleMouseDown);
-			document.removeEventListener("mousemove", handleResize);
-			document.removeEventListener("mouseup", handleMouseUp);
+			thisElement?.removeEventListener('mousedown', handleMouseDown);
+			document.removeEventListener('mousemove', handleResize);
+			document.removeEventListener('mouseup', handleMouseUp);
 		};
 	}, [max, min]);
 
@@ -84,7 +84,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 	}, [leftPaneWidth, uniqueKey]);
 
 	const disableSelectClassName = useMemo(() => {
-		return isDraging ? "disable-control" : "";
+		return isDraging ? 'disable-control' : '';
 	}, [isDraging]);
 
 	return (
@@ -92,7 +92,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 			<div
 				className={classnames(
 					disableSelectClassName,
-					"left-pane ",
+					'left-pane ',
 					leftPaneClassName,
 				)}
 				style={{ width: leftPaneWidth }}
@@ -102,7 +102,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 			<div ref={handleRef} className="handle-container">
 				<div className="handle-bar" />
 				<Tooltip
-					title={leftPaneWidth === 0 ? "展开侧边栏" : "收起侧边栏"}
+					title={leftPaneWidth === 0 ? '展开侧边栏' : '收起侧边栏'}
 					placement="right"
 					mouseLeaveDelay={0}
 					mouseEnterDelay={0}
@@ -129,7 +129,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
 			<div
 				className={classnames(
 					disableSelectClassName,
-					"right-pane",
+					'right-pane',
 					rightPaneClassName,
 				)}
 			>
