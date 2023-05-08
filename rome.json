@@ -25,7 +25,9 @@
 			"performance": {},
 			"security": {},
 			"style": {},
-			"suspicious": {}
+			"suspicious": {
+				"noExplicitAny": "warn"
+			}
 		}
 	},
 	"files": {

@@ -3,6 +3,8 @@ import { IconUserCircle } from '@tabler/icons-react';
 import { Image, Layout, Menu } from 'antd';
 import { Outlet } from 'react-router-dom';
 
+import BreadcrumbsPlus from '@/components/breadcrumbs-plus';
+import MenuBar from '@/components/menu-bar';
 import ResizePane from '@/components/resize-pane';
 import TopProgress from '@/components/top-progress';
 import iHttp from '@/service/http';
@@ -26,18 +28,19 @@ function App() {
         <ResizePane
           leftPane={
             <Layout.Sider width={'100%'}>
-              <Menu
-                mode="inline"
-                className="h-[calc(100vh-theme(space.14))] border-r-0 pt-1"
+              <MenuBar
                 items={[
                   {
-                    label: 'Dashboard',
-                    icon: (
-                      <div>
-                        <IconUserCircle size={16} />
-                      </div>
-                    ),
-                    key: 'dashboard',
+                    label: 'home',
+                    path: '/',
+                  },
+                  {
+                    label: 'Demo',
+                    path: '/demo',
+                  },
+                  {
+                    label: 'Login',
+                    path: '/login',
                   },
                 ]}
               />
@@ -45,8 +48,15 @@ function App() {
           }
           leftPaneClassName=""
           rightPane={
-            <Layout className="ml-3 mr-3 mt-2 mb-1">
-              <Layout.Content className="overflow-y-auto p-2 min-h-min">
+            <Layout className="ml-3 mr-3 mt-2 mb-1 bg-white">
+              <Layout.Content className="overflow-y-auto p-2 min-h-min ">
+                <BreadcrumbsPlus
+                  routes={[
+                    { path: '/', breadcrumb: '首页' },
+                    { path: '/demo', breadcrumb: 'Demo' },
+                    { path: '/login', breadcrumb: 'Login' },
+                  ]}
+                />
                 <TopProgress>
                   <Outlet />
                 </TopProgress>
