@@ -1,6 +1,6 @@
-# template-react-desktop
+# template-react-platform
 
-平台项目模板代码
+一个用 React 实现的 Web 管理系统项目模板
 
 ## 使用
 
@@ -27,7 +27,6 @@
 ├─ orval.config.ts              # 配置产物 openapi/__service__
 └─ rome.json                    # formatter & linter
 ```
-
 
 ## 基本组件 & 方法
 
