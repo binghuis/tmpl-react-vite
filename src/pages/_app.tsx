@@ -17,8 +17,8 @@ function App() {
   const { token, user } = useAuthStore();
 
   return (
-    <Layout className="w-screen h-screen">
-      <Layout.Header className="site-header h-12 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
+    <Layout className="w-screen h-screen ">
+      <Layout.Header className="site-header h-14 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
         <div
           className="w-44 h-full cursor-pointer flex items-center"
           // onClick={() => {}}
@@ -27,7 +27,7 @@ function App() {
         </div>
       </Layout.Header>
       <Watermark content={`${user.id}`}>
-        <Layout>
+        <Layout className='bg-gray-50'>
           <ResizePane
             leftPane={
               <Layout.Sider width={'100%'}>

@@ -31,15 +31,12 @@ const BreadcrumbsPlus = (props: BreadcrumbsPlusProps) => {
       return null;
     }
     return (
-      <>
-        <Breadcrumb
-          itemRender={itemRender}
-          items={breadcrumbs.map(({ match, breadcrumb }, i) => {
-            return { title: breadcrumb, path: match.pathname };
-          })}
-        />
-        <Divider className='my-1' />
-      </>
+      <Breadcrumb
+        itemRender={itemRender}
+        items={breadcrumbs.map(({ match, breadcrumb }, i) => {
+          return { title: breadcrumb, path: match.pathname };
+        })}
+      />
     );
   };
 
