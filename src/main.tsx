@@ -5,15 +5,13 @@ import ReactDOM from 'react-dom/client';
 const { compactAlgorithm } = theme;
 import { blue } from '@ant-design/colors';
 import { Routes } from '@generouted/react-router';
-
-import './index.css';
-import 'antd/dist/reset.css';
-
 import zhCN from 'antd/locale/zh_CN';
-
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 dayjs.locale('zh-cn');
+
+import './index.css';
+import 'antd/dist/reset.css';
 
 const defaultData: ThemeData = {
   borderRadius: 2,

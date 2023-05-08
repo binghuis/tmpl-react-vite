@@ -16,14 +16,14 @@ const middlewares = (initializer: StateCreator<State>) =>
   devtools(
     persist(initializer, {
       name: StorageKeys.Auth,
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => sessionStorage),
     }),
   );
 
 export const useAuthStore = create<State>()(
   middlewares(() => ({
     token: '',
-    user: {},
+    user: { name: 'test', id: -1 },
   })),
 );
 
