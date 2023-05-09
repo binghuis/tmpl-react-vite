@@ -1,10 +1,11 @@
+import Container from '@/components/container';
 import { Link } from '@/router';
 
 const DemoPage = () => {
   return (
-    <div>
+    <Container>
       <Link to={'/demo'}>login</Link>
-    </div>
+    </Container>
   );
 };
 export default DemoPage;

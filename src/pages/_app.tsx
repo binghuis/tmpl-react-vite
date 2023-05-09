@@ -7,8 +7,7 @@ import { MenuBarItems } from '@/constant/menu-bar-items';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
 import { Image, Layout, Watermark } from 'antd';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -19,13 +18,6 @@ function App() {
 
   const { user } = useAuthStore();
   const location = useLocation();
-
-  NProgress.configure({ showSpinner: false });
-
-  useEffect(() => {
-    NProgress.start();
-    NProgress.done();
-  }, [location]);
 
   if (location.pathname === '/login') {
     return <Outlet />;
