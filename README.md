@@ -1,4 +1,4 @@
-# template-react-platform
+# template-react-desktop
 
 一个用 React 实现的桌面 Web 项目模板
 
