@@ -1,18 +1,23 @@
 import { StorageKeys } from '@/constant/storage';
+import { LoginForm } from '@/pages/login';
 import { StateCreator, create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
-
-interface State {
-  token: string;
-  user: Partial<User>;
-}
 
 interface User {
   name: string;
   id: number;
 }
 
-const middlewares = (initializer: StateCreator<State>) =>
+type AuthState = {
+  token?: string;
+  user: User | null;
+  login: (params: LoginForm) => Promise<'success' | undefined>;
+  logout: () => Promise<'success' | undefined>;
+};
+
+const defaultUser = { name: 'test', id: -1 };
+
+const middlewares = (initializer: StateCreator<AuthState>) =>
   devtools(
     persist(initializer, {
       name: StorageKeys.Auth,
@@ -20,13 +25,18 @@ const middlewares = (initializer: StateCreator<State>) =>
     }),
   );
 
-export const useAuthStore = create<State>()(
-  middlewares(() => ({
+export const useAuthStore = create<AuthState>()(
+  middlewares((set) => ({
     token: '',
-    user: { name: 'test', id: -1 },
+    user: defaultUser,
+    login: async (params) => {
+      // 执行登录
+      set({ user: { name: 'admin', id: 1 }, token: '123456' });
+      return 'success';
+    },
+    logout: async () => {
+      set({ user: defaultUser });
+      return 'success';
+    },
   })),
 );
-
-export const setToken = (token: string) => useAuthStore.setState({ token });
-
-export const setUser = (user: Partial<User>) => useAuthStore.setState({ user });

@@ -36,6 +36,7 @@ function App() {
         >
           <img src={Logo} width={60} alt="" />
         </div>
+        <div>2</div>
       </Layout.Header>
       <Watermark content={`${user.id}`}>
         <Layout className='bg-gray-100'>

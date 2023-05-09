@@ -1,11 +1,11 @@
-import { AES, enc } from 'crypto-js';
+import { AES, MD5, enc } from 'crypto-js';
 import { isEmpty } from 'lodash-es';
 
 export default class Secret {
   secretKey: string;
 
   constructor(secretKey: string) {
-    this.secretKey = secretKey;
+    this.secretKey = MD5(secretKey).toString();
   }
 
   encrypt = (input: string | object) => {

@@ -1,5 +1,4 @@
 import { BaseResponse } from './types';
-import { authSecret } from '@/constant/crypto';
 import { getAuthHeader } from '@/utils/auth';
 import axios, {
   AxiosRequestConfig,
@@ -7,9 +6,8 @@ import axios, {
   AxiosResponse,
   Method,
 } from 'axios';
-import chalk from 'chalk';
 import { StatusCodes } from 'http-status-codes';
-import store from 'store2';
+import { green } from 'kolorist';
 
 interface IPendingVal {
   controller: AbortController;
@@ -67,7 +65,7 @@ class DuplicateRequestsController {
     const uri = axios.getUri(config);
     const key = `${config.method?.toUpperCase()} ${uri}`;
     if (!import.meta.env.PROD) {
-      console.log(chalk.green(`${flag}: ${key}`));
+      console.log(green(`${flag}: ${key}`));
     }
     return key;
   };
@@ -108,7 +106,7 @@ AXIOS_INSTANCE.interceptors.request.use((c) => {
     // headers 加 token
     c.headers = {
       ...c.headers,
-      ...getAuthHeader(authSecret.decrypt(store.get('token'))),
+      // ...getAuthHeader(token),
     } as AxiosRequestHeaders;
   }
   const controller = new AbortController();
