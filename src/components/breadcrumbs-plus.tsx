@@ -1,4 +1,5 @@
 import { Path } from '@/router';
+import { IconArrowBadgeRight } from '@tabler/icons-react';
 import { Breadcrumb } from 'antd';
 import { ItemType } from 'antd/es/breadcrumb/Breadcrumb';
 import { Link } from 'react-router-dom';
@@ -33,6 +34,7 @@ const BreadcrumbPlus = (props: BreadcrumbPlusProps) => {
     }
     return (
       <Breadcrumb
+        separator='>'
         itemRender={itemRender}
         items={breadcrumbs.map(({ match, breadcrumb }, i) => {
           return { title: breadcrumb, path: match.pathname };
