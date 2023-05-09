@@ -38,7 +38,7 @@ function App() {
         </div>
         <div>2</div>
       </Layout.Header>
-      <Watermark content={`${user.id}`}>
+      <Watermark content={`${user?.id}`}>
         <Layout className='bg-gray-100'>
           <ResizePane
             leftPane={<MenuBar items={MenuBarItems} />}
