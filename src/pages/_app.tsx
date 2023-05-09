@@ -1,4 +1,4 @@
-import Logo from '@/assets/react.svg';
+import Logo from '@/assets/logo-sm.png';
 import BreadcrumbPlus from '@/components/breadcrumbs-plus';
 import MenuBar from '@/components/menu-bar';
 import ResizePane from '@/components/resize-pane';
@@ -6,7 +6,7 @@ import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { MenuBarItems } from '@/constant/menu-bar-items';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
-import { Image, Layout, Watermark } from 'antd';
+import { Divider, Image, Layout, Watermark } from 'antd';
 
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -30,7 +30,7 @@ function App() {
           className="w-44 h-full cursor-pointer flex items-center"
           // onClick={() => {}}
         >
-          <Image src={Logo} width="80" preview={false} />
+          <img src={Logo} width={60} alt="" />
         </div>
       </Layout.Header>
       <Watermark content={`${user.id}`}>
@@ -40,8 +40,9 @@ function App() {
             leftPaneClassName=""
             rightPane={
               <Layout className="ml-3 mr-3 mt-2 mb-1 bg-white">
-                <Layout.Content className="overflow-y-auto p-2 min-h-min ">
+                <Layout.Content className="overflow-y-auto py-1 px-2 min-h-min ">
                   <BreadcrumbPlus routes={BreadcrumbRoutes} />
+                  {/* <Divider className='m-0 mt-0.5 mb-1.5' /> */}
                   <Outlet />
                 </Layout.Content>
                 <Layout.Footer className="text-center text-gray-400 text-xs p-1 bg-gray-50">
