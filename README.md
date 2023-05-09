@@ -1,12 +1,16 @@
 # template-react-platform
 
-一个用 React 实现的 Web 管理系统项目模板
+一个用 React 实现的桌面 Web 项目模板
 
 ## 使用
 
-`pnpm create hotpot`
+执行 [create-hotpot](https://github.com/binghuis/create-hotpot) 构建命令
 
-## 部分目录结构解释
+```
+pnpm create hotpot -t react-desktop
+```
+
+## 部分目录解释
 
 ```bash
 .
@@ -34,14 +38,15 @@
 
 ## 功能
 
-- [x] 类型安全文件路由：
-- [x] 面包屑管理：
-- [x] Swagger 转 TS 类型文件 & 接口请求方法：
-- [x] 版本管理 & ChangeLog 自动生成：
-- [x] 代码 Format & Link：
-- [x] 状态管理：
-- [x] Auth 模块：
-- [x] 菜单栏关联：
+- [x] 类 NextJs 约定式路由：
+- [x] Swagger 转 TS 类型 & 接口请求方法：
+- [x] 自动生成 ChangeLog & 版本管理：
+- [x] Formatter & Linter
+- [x] 函数式状态管理：
+- [x] 鉴权部分封装：
+- [x] 侧边栏嵌套路由关联：
+- [x] 面包屑配置：
+
 
 
 
