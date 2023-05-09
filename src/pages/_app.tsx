@@ -4,12 +4,13 @@ import MenuBar from '@/components/menu-bar';
 import ResizePane from '@/components/resize-pane';
 import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { MenuBarItems } from '@/constant/menu-bar-items';
+import { PublicPaths } from '@/constant/public-paths';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
-import { Divider, Image, Layout, Watermark } from 'antd';
+import { Layout, Watermark } from 'antd';
 
 import { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
@@ -18,8 +19,9 @@ function App() {
 
   const { user } = useAuthStore();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  if (location.pathname === '/login') {
+  if (PublicPaths.some((path) => matchPath(path, location.pathname))) {
     return <Outlet />;
   }
 
@@ -28,7 +30,9 @@ function App() {
       <Layout.Header className="site-header h-14 p-0 pl-8 pr-2 flex items-center justify-between bg-white">
         <div
           className="w-44 h-full cursor-pointer flex items-center"
-          // onClick={() => {}}
+          onClick={() => {
+            navigate('/');
+          }}
         >
           <img src={Logo} width={60} alt="" />
         </div>
