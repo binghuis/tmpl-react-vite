@@ -49,7 +49,7 @@ const App = () => {
       >
         <div className='flex flex-col h-full'>
           <div
-            className={'h-12 cursor-pointer flex items-center'}
+            className={'h-12 cursor-pointer flex items-center pl-2'}
             style={{
               borderBottomWidth: 1,
               borderBottomColor: token.colorBorderSecondary,
@@ -59,7 +59,14 @@ const App = () => {
             }}
           >
             <img src={Logo} className='h-full' alt="" />
-            {!collapse.state && <span className='text-lg'>Antd</span>}
+            {!collapse.state && (
+              <span
+                className='text-lg'
+                style={{ color: token.colorTextHeading }}
+              >
+                Antd
+              </span>
+            )}
           </div>
           <div className='flex-grow'>
             <MenuBar items={MenuBarItems} className='border-r-0' />
@@ -80,7 +87,7 @@ const App = () => {
 
       <Layout>
         <Header
-          className="h-12 flex items-center justify-between px-2"
+          className="h-12 flex items-center px-2 justify-end"
           style={{
             background: token.colorBgContainer,
             borderBottomWidth: 1,
