@@ -35,18 +35,21 @@ const App = () => {
   return (
     <Layout className="w-screen h-screen">
       <Sider
+        width={256}
         style={{ background: token.colorBgContainer }}
+        className='border-r px-2'
         trigger={null}
         collapsible
         collapsed={collapse.state}
       >
         <div
-          className="h-12 cursor-pointer"
+          className={'h-12 cursor-pointer border-b flex items-center'}
           onClick={() => {
             navigate('/');
           }}
         >
           <img src={Logo} className='h-full' alt="" />
+          {!collapse.state && <span className='text-lg'>测试项目</span>}
         </div>
         <div className='collapsed-button' onClick={collapse.toggle}>
           {collapse.state ? (
@@ -56,12 +59,12 @@ const App = () => {
           )}
         </div>
 
-        <MenuBar items={MenuBarItems} className='border-r-0' />
+        <MenuBar items={MenuBarItems} className='border-r-0 ' />
       </Sider>
 
       <Layout>
         <Header
-          className="h-12 flex items-center justify-end px-4"
+          className="h-12 flex items-center justify-end px-4 border-b"
           style={{ background: token.colorBgContainer }}
         >
           <div
