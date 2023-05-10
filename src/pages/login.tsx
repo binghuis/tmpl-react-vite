@@ -4,7 +4,6 @@ import { IconLock, IconUser } from '@tabler/icons-react';
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 export interface LoginForm {
   account: string;
   password: string;

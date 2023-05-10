@@ -1,3 +1,4 @@
+import useIsMounted from '@/hooks/use-is-mounted';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import React, { PropsWithChildren } from 'react';
@@ -5,12 +6,15 @@ import { useEffect } from 'react';
 
 NProgress.configure({ showSpinner: false });
 
-export type ContainerProps = {};
+export type PageProps = {};
 
-const Container = (props: PropsWithChildren<ContainerProps>) => {
+const Page = (props: PropsWithChildren<PageProps>) => {
   const { children } = props;
+  const isMounted = useIsMounted();
 
-  NProgress.start();
+  if (!isMounted()) {
+    NProgress.start();
+  }
 
   useEffect(() => {
     NProgress.done();
@@ -19,4 +23,4 @@ const Container = (props: PropsWithChildren<ContainerProps>) => {
   return <>{children}</>;
 };
 
-export default Container;
+export default Page;

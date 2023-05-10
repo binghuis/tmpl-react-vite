@@ -1,11 +1,11 @@
-import Container from '@/components/container';
+import Page from '@/components/page';
 import { Link } from '@/router';
 
 const DemoPage = () => {
   return (
-    <Container>
+    <Page>
       <Link to={'/demo'}>404</Link>
-    </Container>
+    </Page>
   );
 };
 export default DemoPage;

@@ -1,15 +1,15 @@
-import { StyleProvider } from '@ant-design/cssinjs';
-import { ConfigProvider, ThemeConfig, theme } from 'antd';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-const { compactAlgorithm } = theme;
 import { blue } from '@ant-design/colors';
+import { StyleProvider } from '@ant-design/cssinjs';
 import { Routes } from '@generouted/react-router';
+import { ConfigProvider, ThemeConfig } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 dayjs.locale('zh-cn');
 
+import ThemeProvider, { ThemeContext } from './context/theme';
 import './index.css';
 import 'antd/dist/reset.css';
 
@@ -19,7 +19,6 @@ const defaultData: ThemeData = {
 };
 
 const themeConfig: ThemeConfig = {
-  algorithm: [],
   token: {
     colorPrimary: defaultData.colorPrimary,
     borderRadius: defaultData.borderRadius,
@@ -33,10 +32,19 @@ type ThemeData = {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <StyleProvider hashPriority="high">
-      <ConfigProvider locale={zhCN} theme={themeConfig}>
-        <Routes />
-      </ConfigProvider>
-    </StyleProvider>
+    <ThemeProvider>
+      <ThemeContext.Consumer>
+        {({ theme }) => (
+          <ConfigProvider
+            locale={zhCN}
+            theme={{ ...themeConfig, algorithm: [theme] }}
+          >
+            <StyleProvider hashPriority="high">
+              <Routes />
+            </StyleProvider>
+          </ConfigProvider>
+        )}
+      </ThemeContext.Consumer>
+    </ThemeProvider>
   </React.StrictMode>,
 );
