@@ -5,7 +5,7 @@ type IconProps = {
   size?: number;
 } & SVGProps<SVGSVGElement>;
 
-const Icon = ({ name, size = 24, onClick, ...rest }: IconProps) => {
+const Icon = ({ name, size = 18, onClick, ...rest }: IconProps) => {
   return (
     <svg {...rest} width={size} height={size}>
       <use xlinkHref={`#${name}`} />

@@ -59,13 +59,15 @@ const App = () => {
 
       <Layout>
         <Header
-          className="h-12 flex items-center"
+          className="h-12 flex items-center justify-end px-4"
           style={{ background: token.colorBgContainer }}
         >
-          <Button
+          <div
             onClick={toggleTheme}
-            icon={isDark ? <IconSunFilled /> : <IconMoonFilled />}
-          />
+            className='cursor-pointer opacity-50 hover:opacity-90 duration-300'
+          >
+            {isDark ? <Icon name='icon-sun' /> : <Icon name='icon-moon_' />}
+          </div>
         </Header>
         <Content className="overflow-y-auto py-1 px-2 min-h-min">
           <Watermark content={`${user?.id}`}>
@@ -74,7 +76,7 @@ const App = () => {
           </Watermark>
         </Content>
         <Footer className="text-center text-gray-400 text-xs p-1">
-          Made By @binghuis ❤️
+          Made with ❤️ by @binghuis
         </Footer>
       </Layout>
     </Layout>

@@ -34,7 +34,6 @@ const BreadcrumbPlus = (props: BreadcrumbPlusProps) => {
     }
     return (
       <Breadcrumb
-        separator='>'
         itemRender={itemRender}
         items={breadcrumbs.map(({ match, breadcrumb }, i) => {
           return { title: breadcrumb, path: match.pathname };
