@@ -6,7 +6,6 @@ import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { MenuBarItems } from '@/constant/menu-bar-items';
 import { PublicPaths } from '@/constant/public-paths';
 import { ThemeContext } from '@/context/theme';
-import useBoolean from '@/hooks/use-boolean';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
@@ -14,6 +13,7 @@ import { css } from '@emotion/react';
 import { Button, Layout, Watermark, theme } from 'antd';
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import { useBoolean } from 'usehooks-ts';
 
 const App = () => {
   useEffect(() => {
@@ -45,7 +45,7 @@ const App = () => {
         className='px-2'
         trigger={null}
         collapsible
-        collapsed={collapse.state}
+        collapsed={collapse.value}
       >
         <div className='flex flex-col h-full'>
           <div
@@ -59,7 +59,7 @@ const App = () => {
             }}
           >
             <img src={Logo} className='h-full' alt="" />
-            {!collapse.state && (
+            {!collapse.value && (
               <span
                 className='text-lg'
                 style={{ color: token.colorTextHeading }}
@@ -80,7 +80,23 @@ const App = () => {
               color: token.colorIcon,
             }}
           >
-            {collapse.state ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            {collapse.value ? (
+              <MenuUnfoldOutlined
+                css={css`
+            &:hover {
+              color: ${token.colorPrimaryHover};
+            }
+            `}
+              />
+            ) : (
+              <MenuFoldOutlined
+                css={css`
+              &:hover {
+                color: ${token.colorPrimaryHover};
+              }
+              `}
+              />
+            )}
           </div>
         </div>
       </Sider>

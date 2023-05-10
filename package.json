@@ -24,12 +24,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
-    "store2": "^2.14.2",
+    "usehooks-ts": "^2.9.1",
     "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@ant-design/colors": "^7.0.0",
     "@ant-design/cssinjs": "^1.9.1",
+    "@emotion/babel-plugin": "^11.11.0",
     "@emotion/react": "^11.11.0",
     "@faker-js/faker": "^7.6.0",
     "@types/crypto-js": "^4.1.1",
@@ -40,7 +41,6 @@
     "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
-    "chalk": "^5.2.0",
     "classnames": "^2.3.2",
     "http-status-codes": "^2.2.0",
     "kolorist": "^1.8.0",

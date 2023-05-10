@@ -1,6 +1,6 @@
-import useBoolean from '@/hooks/use-boolean';
 import { theme } from 'antd';
 import React, { PropsWithChildren, createContext, useEffect } from 'react';
+import { useBoolean, useMediaQuery } from 'usehooks-ts';
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
@@ -11,14 +11,15 @@ export const ThemeContext = createContext({
 });
 
 function ThemeProvider({ children }: PropsWithChildren) {
-  const isDark = useBoolean();
+  const dark = useMediaQuery('(prefers-color-scheme: dark)');
+  const isDark = useBoolean(dark);
 
   return (
     <ThemeContext.Provider
       value={{
-        isDark: isDark.state,
+        isDark: isDark.value,
         toggleTheme: isDark.toggle,
-        theme: isDark.state ? darkAlgorithm : defaultAlgorithm,
+        theme: isDark.value ? darkAlgorithm : defaultAlgorithm,
       }}
     >
       {children}
