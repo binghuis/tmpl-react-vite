@@ -1,5 +1,4 @@
 import Logo from '@/assets/logo-sm.png';
-import Night from '@/assets/night-sunny.svg';
 import BreadcrumbPlus from '@/components/breadcrumbs-plus';
 import Icon from '@/components/icon';
 import MenuBar from '@/components/menu-bar';
@@ -10,7 +9,6 @@ import { ThemeContext } from '@/context/theme';
 import useBoolean from '@/hooks/use-boolean';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
-import { IconMoonFilled, IconSunFilled } from '@tabler/icons-react';
 import { Button, Layout, Watermark, theme } from 'antd';
 
 import { useContext, useEffect } from 'react';
@@ -51,7 +49,11 @@ const App = () => {
           <img src={Logo} className='h-full' alt="" />
         </div>
         <div className='collapsed-button' onClick={collapse.toggle}>
-          1
+          {collapse.state ? (
+            <Icon name='right1' fill='gray' size={14} />
+          ) : (
+            <Icon name='left1' fill='gray' size={14} />
+          )}
         </div>
 
         <MenuBar items={MenuBarItems} className='border-r-0' />
@@ -66,7 +68,7 @@ const App = () => {
             onClick={toggleTheme}
             className='cursor-pointer opacity-50 hover:opacity-90 duration-300'
           >
-            {isDark ? <Icon name='icon-sun' /> : <Icon name='icon-moon_' />}
+            {isDark ? <Icon name='sun' /> : <Icon name='moon_' />}
           </div>
         </Header>
         <Content className="overflow-y-auto py-1 px-2 min-h-min">

@@ -1,5 +1,4 @@
 import { Path } from '@/router';
-import { IconArrowBadgeRight } from '@tabler/icons-react';
 import { Breadcrumb } from 'antd';
 import { ItemType } from 'antd/es/breadcrumb/Breadcrumb';
 import { Link } from 'react-router-dom';

@@ -2,7 +2,7 @@ import { Path } from '@/router';
 import { Menu, MenuProps } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { useEffect, useState } from 'react';
-import { Link, matchPath, useLocation } from 'react-router-dom';
+import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom';
 
 interface ItemBase {
   icon?: React.ReactNode;
@@ -11,7 +11,7 @@ interface ItemBase {
 
 /** 叶子节点可以关联其他路径 */
 interface LeafItem extends ItemBase {
-  path: Path;
+  path?: Path;
   related?: Path[];
 }
 
@@ -44,7 +44,7 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
     let match;
 
     // 处理叶子节点
-    if ('path' in item) {
+    if ('path' in item && item.path) {
       const { path, related } = item;
 
       const paths = related ? [path, ...related] : [path];
@@ -59,7 +59,9 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
       // 匹配项为真则表示 itemsTemp 最后一项为叶子节点
       const lastItem = itemsTemp[itemsTemp.length - 1] as LeafItem;
       // 更新 selectedKey
-      setSelectedKey(lastItem.path);
+      if (lastItem.path) {
+        setSelectedKey(lastItem.path);
+      }
       // itemsTemp 叶子节点之前的节点都为内部节点，更新 openKeys
       if (itemsTemp.length > 1) {
         const openKeys = itemsTemp
@@ -83,12 +85,13 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
   /** 将 Item[] 转换成 MenuItem[] */
   const convertItem2MenuItem = (items: Item[]): NonNullable<ItemType>[] => {
     return items.map((item) => {
-      const { label } = item;
+      const { label, icon } = item;
+
       let children = null;
       let key = '';
       let path = '';
       /** 判断叶子节点 */
-      if ('path' in item) {
+      if ('path' in item && item.path) {
         key = item.path;
         path = item.path;
       }
@@ -105,6 +108,7 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
         label: path ? <Link to={path}>{label}</Link> : label,
         key: key,
         title: label,
+        icon: icon,
       };
 
       if (children) {

@@ -1,6 +1,6 @@
 import Logo from '@/assets/logo.png';
+import Icon from '@/components/icon';
 import { useAuthStore } from '@/store/auth';
-import { IconLock, IconUser } from '@tabler/icons-react';
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ const PageLogin: React.FC = () => {
               allowClear
               placeholder="账号"
               className='h-10'
-              prefix={<IconUser size={16} color="gray" />}
+              prefix={<Icon name='user' size={16} />}
             />
           </Form.Item>
 
@@ -69,7 +69,7 @@ const PageLogin: React.FC = () => {
               allowClear
               placeholder="密码"
               className='h-10'
-              prefix={<IconLock size={16} color="gray" />}
+              prefix={<Icon name='lock' size={16} />}
             />
           </Form.Item>
 
