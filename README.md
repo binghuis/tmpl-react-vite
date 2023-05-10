@@ -38,15 +38,16 @@ pnpm create hotpot -t react-desktop
 
 ## 功能
 
-- [x] 类 NextJs 文件路由：
-- [x] Swagger 转 TS 类型 & 接口请求方法：
+- [x] 类 NextJs 约定式路由：
+- [x] Swagger 转 TS & 接口请求方法：
 - [x] 自动生成 ChangeLog & 版本管理：
-- [x] Formatter & Linter
-- [x] 函数式状态管理：
-- [x] 鉴权部分封装：
-- [x] 侧边栏嵌套路由关联：
-- [x] 面包屑配置：
-- [x] 暗黑主题
+- [x] Formatter & Linter：
+- [x] 状态管理：
+- [x] 鉴权：
+- [x] 侧边栏：
+- [x] 面包屑：
+- [x] 暗黑主题：
+- [x] IconFont：
 
 
 
