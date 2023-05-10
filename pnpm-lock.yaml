@@ -1,12 +1,12 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@ant-design/icons':
+    specifier: ^5.0.1
+    version: 5.0.1(react-dom@18.2.0)(react@18.2.0)
   '@generouted/react-router':
     specifier: ^1.12.7
     version: 1.12.7(react-router-dom@6.11.1)(react@18.2.0)(vite@4.3.5)
-  '@tabler/icons-react':
-    specifier: ^2.17.0
-    version: 2.17.0(react@18.2.0)
   antd:
     specifier: ^5.4.7
     version: 5.4.7(react-dom@18.2.0)(react@18.2.0)
@@ -1372,20 +1372,6 @@ packages:
       '@stoplight/yaml-ast-parser': 0.0.48
       tslib: 2.5.0
     dev: true
-
-  /@tabler/icons-react@2.17.0(react@18.2.0):
-    resolution: {integrity: sha512-kuEW+qNwRqcK5iMl7qTapzX2NiMOwPg4Az01d+IZ1DIMwaZ7iKPJaIor2ihKFLPYrT9D5BZHXB8R5mSkw0FETg==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@tabler/icons': 2.17.0
-      prop-types: 15.8.1
-      react: 18.2.0
-    dev: false
-
-  /@tabler/icons@2.17.0:
-    resolution: {integrity: sha512-UeJaylOGNRhQKyDlgZfrQ3UPSGlfVQuXcmCsTYeXioKKepibW6VZ3H36Lo1jvBTBkQD2e9m+k2NxwkztOTXwrA==}
-    dev: false
 
   /@tootallnate/once@1.1.2:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
@@ -3795,6 +3781,7 @@ packages:
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -4131,14 +4118,6 @@ packages:
   /printable-characters@1.0.42:
     resolution: {integrity: sha512-dKp+C4iXWK4vVYZmYSd0KBH5F/h1HoZRsbJ82AVKRO3PEo8L4lBS/vLwhVtpwwuYcoIsVY+1JYKR268yn480uQ==}
     dev: true
-
-  /prop-types@15.8.1:
-    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react-is: 16.13.1
-    dev: false
 
   /proxy-agent@5.0.0:
     resolution: {integrity: sha512-gkH7BkvLVkSfX9Dk27W6TyNOWWZWRilRfk1XxGNWOYJ2TuedAv1yFpCaU9QSBmBe716XOTNpYNOzhysyw8xn7g==}

@@ -11,6 +11,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@generouted/react-router": "^1.12.7",
     "antd": "^5.4.7",
     "antd-form-with": "^0.3.0",

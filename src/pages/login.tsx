@@ -56,7 +56,7 @@ const PageLogin: React.FC = () => {
               allowClear
               placeholder="账号"
               className='h-10'
-              prefix={<Icon name='user' size={16} />}
+              prefix={<Icon type='user' size={16} />}
             />
           </Form.Item>
 
@@ -69,7 +69,7 @@ const PageLogin: React.FC = () => {
               allowClear
               placeholder="密码"
               className='h-10'
-              prefix={<Icon name='lock' size={16} />}
+              prefix={<Icon type='lock' size={16} />}
             />
           </Form.Item>
 

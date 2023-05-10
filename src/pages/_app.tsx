@@ -50,9 +50,9 @@ const App = () => {
         </div>
         <div className='collapsed-button' onClick={collapse.toggle}>
           {collapse.state ? (
-            <Icon name='right1' fill='gray' size={14} />
+            <Icon type='right1' size={18} />
           ) : (
-            <Icon name='left1' fill='gray' size={14} />
+            <Icon type='left1' size={18} />
           )}
         </div>
 
@@ -66,9 +66,9 @@ const App = () => {
         >
           <div
             onClick={toggleTheme}
-            className='cursor-pointer opacity-50 hover:opacity-90 duration-300'
+            className='cursor-pointer opacity-60 hover:opacity-95 duration-300'
           >
-            {isDark ? <Icon name='sun' /> : <Icon name='moon_' />}
+            {isDark ? <Icon type='sun' /> : <Icon type='moon_' />}
           </div>
         </Header>
         <Content className="overflow-y-auto py-1 px-2 min-h-min">

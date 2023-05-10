@@ -1,16 +1,7 @@
-import React, { SVGProps } from 'react';
+import { createFromIconfontCN } from '@ant-design/icons';
 
-type IconProps = {
-  name: string;
-  size?: number;
-} & SVGProps<SVGSVGElement>;
-
-const Icon = ({ name, size = 18, onClick, ...rest }: IconProps) => {
-  return (
-    <svg {...rest} width={size} height={size}>
-      <use xlinkHref={`#${name}`} />
-    </svg>
-  );
-};
+const Icon = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/c/font_4060387_ivf3zhdmkfp.js',
+});
 
 export default Icon;
