@@ -49,6 +49,9 @@ pnpm create hotpot -t react-desktop
 - [x] 暗黑主题：
 - [x] IconFont：
 
+## 预览
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/template-react-desktop)
 
 
 
