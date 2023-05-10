@@ -3,7 +3,7 @@ import { MenuBarProps } from '@/components/menu-bar';
 
 export const MenuBarItems: MenuBarProps['items'] = [
   {
-    label: 'dashboard',
+    label: '首页',
     path: '/',
     icon: <Icon type='dashboard' />,
   },
