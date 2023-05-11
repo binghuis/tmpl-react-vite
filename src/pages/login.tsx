@@ -33,10 +33,10 @@ const PageLogin: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen">
-      <div className='px-4 py-8 rounded-md bg-blue-50 shadow-lg'>
-        <div className='w-40 mx-auto'>
-          <img src={Logo} alt="" width='100%' />
+    <div className="flex h-screen w-screen items-center justify-center">
+      <div className="rounded-md bg-blue-50 px-4 py-8 shadow-lg">
+        <div className="mx-auto w-40">
+          <img src={Logo} alt="" width="100%" />
         </div>
         <Form
           form={form}
@@ -47,41 +47,31 @@ const PageLogin: React.FC = () => {
           autoComplete="off"
           onValuesChange={handleChange}
         >
-          <Form.Item
-            label=""
-            name="account"
-            rules={[{ required: true, message: '请输入账号' }]}
-          >
+          <Form.Item label="" name="account" rules={[{ required: true, message: '请输入账号' }]}>
             <Input
               allowClear
               placeholder="账号"
-              className='h-10'
-              prefix={<Icon type='user' size={16} />}
+              className="h-10"
+              prefix={<Icon type="user" size={16} />}
             />
           </Form.Item>
 
-          <Form.Item
-            label=""
-            name="password"
-            rules={[{ required: true, message: '请输入密码' }]}
-          >
+          <Form.Item label="" name="password" rules={[{ required: true, message: '请输入密码' }]}>
             <Input.Password
               allowClear
               placeholder="密码"
-              className='h-10'
-              prefix={<Icon type='lock' size={16} />}
+              className="h-10"
+              prefix={<Icon type="lock" size={16} />}
             />
           </Form.Item>
 
           <Form.Item>
             <Button
               block
-              type='primary'
+              type="primary"
               disabled={!isFormValid}
               onClick={submit}
-              className={`${
-                isFormValid ? 'hover:shadow-lg hover:scale-105' : ''
-              } origin-top h-10`}
+              className={`${isFormValid ? 'hover:scale-105 hover:shadow-lg' : ''} h-10 origin-top`}
             >
               登录
             </Button>

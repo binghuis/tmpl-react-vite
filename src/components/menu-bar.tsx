@@ -24,10 +24,7 @@ interface InternalItem extends ItemBase {
 type Item = InternalItem | LeafItem;
 
 export interface MenuBarProps
-  extends Omit<
-    MenuProps,
-    'items' | 'selectedKeys' | 'openKeys' | 'onOpenChange'
-  > {
+  extends Omit<MenuProps, 'items' | 'selectedKeys' | 'openKeys' | 'onOpenChange'> {
   items: Item[];
 }
 
@@ -64,9 +61,7 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
       }
       // itemsTemp 叶子节点之前的节点都为内部节点，更新 openKeys
       if (itemsTemp.length > 1) {
-        const openKeys = itemsTemp
-          .slice(0, -1)
-          .map((item) => (item as InternalItem).key);
+        const openKeys = itemsTemp.slice(0, -1).map((item) => (item as InternalItem).key);
 
         setOpenKeys(openKeys);
       }

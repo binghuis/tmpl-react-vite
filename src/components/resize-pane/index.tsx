@@ -33,9 +33,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
   uniqueKey = 'resize-pane',
 }) => {
   const paneWidth = localStorage.getItem(uniqueKey);
-  const [leftPaneWidth, setLeftPaneWidth] = useState(
-    paneWidth ? Number(paneWidth) : initValue,
-  );
+  const [leftPaneWidth, setLeftPaneWidth] = useState(paneWidth ? Number(paneWidth) : initValue);
   const handleRef = useRef<HTMLDivElement>(null);
   const [isDraging, setIsDraging] = useState(false);
 
@@ -90,11 +88,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
   return (
     <div className="resizeable-pane-container">
       <div
-        className={classnames(
-          disableSelectClassName,
-          'left-pane ',
-          leftPaneClassName,
-        )}
+        className={classnames(disableSelectClassName, 'left-pane ', leftPaneClassName)}
         style={{ width: leftPaneWidth }}
       >
         {leftPane}
@@ -125,13 +119,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
           </div>
         </Tooltip>
       </div>
-      <div
-        className={classnames(
-          disableSelectClassName,
-          'right-pane',
-          rightPaneClassName,
-        )}
-      >
+      <div className={classnames(disableSelectClassName, 'right-pane', rightPaneClassName)}>
         {rightPane}
       </div>
     </div>

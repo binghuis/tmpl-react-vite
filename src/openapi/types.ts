@@ -13,9 +13,7 @@ export interface PaginationResponse<T = unknown[]> {
 export type PickData<T extends BaseResponse> = T['data'];
 
 /** response.data.data 分页数据 list 类型 */
-export type PickList<T extends BaseResponse<PaginationResponse>> =
-  T['data']['data'];
+export type PickList<T extends BaseResponse<PaginationResponse>> = T['data']['data'];
 
 /** response.data.data 分页数据元素 list.item 类型 */
-export type PickListItem<T extends BaseResponse<PaginationResponse>> =
-  T['data']['data'][number];
+export type PickListItem<T extends BaseResponse<PaginationResponse>> = T['data']['data'][number];

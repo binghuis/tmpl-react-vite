@@ -5,11 +5,11 @@ export const MenuBarItems: MenuBarProps['items'] = [
   {
     label: '首页',
     path: '/',
-    icon: <Icon type='dashboard' />,
+    icon: <Icon type="dashboard" />,
   },
   {
     label: 'Demo',
     path: '/demo',
-    icon: <Icon type='dashboard' />,
+    icon: <Icon type="dashboard" />,
   },
 ];

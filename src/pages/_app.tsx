@@ -14,7 +14,6 @@ import { Button, Layout, Watermark, theme } from 'antd';
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
-
 const App = () => {
   useEffect(() => {
     iHttp.joke();
@@ -34,7 +33,7 @@ const App = () => {
   const { Header, Content, Footer, Sider } = Layout;
 
   return (
-    <Layout className="w-screen h-screen">
+    <Layout className="h-screen w-screen">
       <Sider
         width={256}
         style={{
@@ -42,14 +41,14 @@ const App = () => {
           borderRightWidth: 1,
           borderRightColor: token.colorBorderSecondary,
         }}
-        className='px-2'
+        className="px-2"
         trigger={null}
         collapsible
         collapsed={collapse.value}
       >
-        <div className='flex flex-col h-full'>
+        <div className="flex h-full  flex-col">
           <div
-            className={'h-12 cursor-pointer flex items-center pl-2'}
+            className={'flex h-12 cursor-pointer items-center pl-2'}
             style={{
               borderBottomWidth: 1,
               borderBottomColor: token.colorBorderSecondary,
@@ -58,22 +57,19 @@ const App = () => {
               navigate('/');
             }}
           >
-            <img src={Logo} className='h-full' alt="" />
+            <img src={Logo} className="h-full" alt="" />
             {!collapse.value && (
-              <span
-                className='text-lg'
-                style={{ color: token.colorTextHeading }}
-              >
+              <span className="text-lg" style={{ color: token.colorTextHeading }}>
                 Antd
               </span>
             )}
           </div>
-          <div className='flex-grow'>
-            <MenuBar items={MenuBarItems} className='border-r-0' />
+          <div className="flex-grow">
+            <MenuBar items={MenuBarItems} className="border-r-0" />
           </div>
           <div
             onClick={collapse.toggle}
-            className='cursor-pointer flex justify-center pt-2 pb-4'
+            className="flex cursor-pointer justify-center pb-4 pt-2"
             style={{
               borderTopWidth: 1,
               borderTopColor: token.colorBorderSecondary,
@@ -83,18 +79,18 @@ const App = () => {
             {collapse.value ? (
               <MenuUnfoldOutlined
                 css={css`
-            &:hover {
-              color: ${token.colorPrimaryHover};
-            }
-            `}
+                  &:hover {
+                    color: ${token.colorPrimaryHover};
+                  }
+                `}
               />
             ) : (
               <MenuFoldOutlined
                 css={css`
-              &:hover {
-                color: ${token.colorPrimaryHover};
-              }
-              `}
+                  &:hover {
+                    color: ${token.colorPrimaryHover};
+                  }
+                `}
               />
             )}
           </div>
@@ -103,7 +99,7 @@ const App = () => {
 
       <Layout>
         <Header
-          className="h-12 flex items-center px-2 justify-end"
+          className="flex h-12 items-center justify-end px-2"
           style={{
             background: token.colorBgContainer,
             borderBottomWidth: 1,
@@ -112,24 +108,18 @@ const App = () => {
         >
           <div
             onClick={toggleTheme}
-            className='cursor-pointer opacity-60 hover:opacity-95 duration-300 flex'
+            className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
           >
-            {isDark ? (
-              <Icon type='sun' size={20} />
-            ) : (
-              <Icon type='moon_stars_fill' size={22} />
-            )}
+            {isDark ? <Icon type="sun" size={20} /> : <Icon type="moon_stars_fill" size={22} />}
           </div>
         </Header>
-        <Content className="overflow-y-auto py-1 px-2 min-h-min">
+        <Content className="min-h-min overflow-y-auto px-2 py-1">
           <Watermark content={`${user?.id}`}>
             <BreadcrumbPlus routes={BreadcrumbRoutes} />
             <Outlet />
           </Watermark>
         </Content>
-        <Footer className="text-center text-gray-400 text-xs p-1">
-          Made with ❤️ by @binghuis
-        </Footer>
+        <Footer className="p-1 text-center text-xs text-gray-400">Made with ❤️ by @binghuis</Footer>
       </Layout>
     </Layout>
   );

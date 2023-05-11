@@ -1,5 +1,3 @@
 import { Path } from '@/router';
 
-export const PublicPaths: Path[] = [
-    '/login'
-];
+export const PublicPaths: Path[] = ['/login'];

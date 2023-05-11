@@ -1,11 +1,6 @@
 import { BaseResponse } from './types';
 import { getAuthHeader } from '@/utils/auth';
-import axios, {
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponse,
-  Method,
-} from 'axios';
+import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
 import { StatusCodes } from 'http-status-codes';
 import { green } from 'kolorist';
 
@@ -27,16 +22,13 @@ class DuplicateRequestsController {
   hasPending = (key: string) => this.pending[key];
   addPending = (key: string, controller: AbortController) => {
     /** 过滤过期接口 */
-    this.pending = Object.entries(this.pending).reduce(
-      (acc: IPending, [key, val]) => {
-        const duration = Date.now() - val.time;
-        if (duration < this.expire) {
-          acc[key] = val;
-        }
-        return acc;
-      },
-      {},
-    );
+    this.pending = Object.entries(this.pending).reduce((acc: IPending, [key, val]) => {
+      const duration = Date.now() - val.time;
+      if (duration < this.expire) {
+        acc[key] = val;
+      }
+      return acc;
+    }, {});
     if (this.hasPending(key)) {
       console.warn(`${key} 连续请求，本次被忽略`);
       controller.abort();
@@ -55,10 +47,7 @@ class DuplicateRequestsController {
 
   /** 短时间内重复请求只保留最后一次，其余中断 */
   /** 生成一个由url，method和data组成的字符串请求key */
-  genRequestKey = (
-    config: AxiosRequestConfig,
-    flag?: 'request' | 'response',
-  ) => {
+  genRequestKey = (config: AxiosRequestConfig, flag?: 'request' | 'response') => {
     if (!config) {
       return `${+new Date()}`.valueOf();
     }
@@ -117,10 +106,7 @@ AXIOS_INSTANCE.interceptors.request.use((c) => {
 
 AXIOS_INSTANCE.interceptors.response.use(
   (res: AxiosResponse<BaseResponse>) => {
-    const key = duplicateRequestsController.genRequestKey(
-      { ...res.config },
-      'response',
-    );
+    const key = duplicateRequestsController.genRequestKey({ ...res.config }, 'response');
     duplicateRequestsController.removePending(key);
     const resData = res.data;
 
@@ -146,11 +132,7 @@ export const ax = <T>(config: AxiosRequestConfig): Promise<T> => {
 };
 
 const request = (method: Method) => {
-  return async <T, D>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig,
-  ): Promise<T> => {
+  return async <T, D>(url: string, data?: D, config?: AxiosRequestConfig): Promise<T> => {
     const requestHandle: AxiosRequestConfig = {
       ...axReqConfig,
       url,
