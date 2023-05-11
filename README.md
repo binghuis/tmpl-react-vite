@@ -1,10 +1,10 @@
 # template-react-desktop
 
-一个用 React 实现的桌面 Web 项目模板
+一个 `React Desktop Site` 项目模板
 
-## 使用
+## 下载
 
-执行 [create-hotpot](https://github.com/binghuis/create-hotpot) 构建命令
+无需安装，本地直接执行 [create-hotpot](https://github.com/binghuis/create-hotpot) `CLI` 命令
 
 ```
 pnpm create hotpot -t react-desktop
@@ -32,24 +32,20 @@ pnpm create hotpot -t react-desktop
 └─ rome.json                    # formatter & linter
 ```
 
-## 基本组件 & 方法
+_项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [pnpm](https://pnpm.io/installation)_
 
-## 工具 & 依赖
+## Feature
 
-## 脚本
-
-## 功能
-
-- [x] 类 NextJs 约定式路由：
-- [x] Swagger 转 TS & 接口请求方法：
-- [x] 自动生成 ChangeLog & 版本管理：
-- [x] Formatter & Linter：
-- [x] 状态管理：
-- [x] 鉴权：
-- [x] 侧边栏：
-- [x] 面包屑：
-- [x] 暗黑主题：
-- [x] IconFont：
+- [x] 根据 `Swagger` 生成 `TS` 类型 和 接口请求方法代码
+- [x] 类 `NextJs` 约定式路由：文件即路由，根据文件结构自动生成 `Routes`
+- [x] 路由类型安全的侧边栏组件：支持关联嵌套路由
+- [x] 路由类型安全的面包屑组件：支持根据动态路由参数生成面包屑内容
+- [x] 双主题：实现 亮/暗 主题切换
+- [x] 鉴权：用户 登录/鉴权 模块封装完成
+- [x] 状态管理：更加函数式，更加 `Hook`
+- [x] `IconFont`：使用 `IconFont` 管理项目 `Icon`
+- [x] `Formatter` & `Linter`：`Prettier` + `ESLint` + `StyleLint` 配置
+- [x] 自动生成 `ChangeLog` & 版本管理：代码提交版本号自动更新 & 自动写入 `ChangeLog`
 
 ## 预览
 
