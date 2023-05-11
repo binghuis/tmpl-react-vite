@@ -10,7 +10,8 @@ import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Button, Layout, Watermark, theme } from 'antd';
+import { Layout, Watermark, theme } from 'antd';
+
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
@@ -46,7 +47,7 @@ const App = () => {
         collapsible
         collapsed={collapse.value}
       >
-        <div className="flex h-full  flex-col">
+        <div className="flex h-full flex-col">
           <div
             className={'flex h-12 cursor-pointer items-center pl-2'}
             style={{

@@ -96,9 +96,9 @@ devDependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
-  classnames:
-    specifier: ^2.3.2
-    version: 2.3.2
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
   eslint:
     specifier: ^8.40.0
     version: 8.40.0
@@ -135,9 +135,12 @@ devDependencies:
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
+  prettier-plugin-organize-imports:
+    specifier: ^3.2.2
+    version: 3.2.2(prettier@2.8.8)(typescript@5.0.4)
   prettier-plugin-tailwindcss:
     specifier: ^0.2.8
-    version: 0.2.8(prettier@2.8.8)
+    version: 0.2.8(prettier-plugin-organize-imports@3.2.2)(prettier@2.8.8)
   stylelint:
     specifier: ^15.6.1
     version: 15.6.1
@@ -2401,6 +2404,11 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    dev: true
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: true
 
   /color-convert@1.9.3:
@@ -5124,7 +5132,24 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-tailwindcss@0.2.8(prettier@2.8.8):
+  /prettier-plugin-organize-imports@3.2.2(prettier@2.8.8)(typescript@5.0.4):
+    resolution: {integrity: sha512-e97lE6odGSiHonHJMTYC0q0iLXQyw0u5z/PJpvP/3vRy6/Zi9kLBwFAbEGjDzIowpjQv8b+J04PDamoUSQbzGA==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 2.8.8
+      typescript: 5.0.4
+    dev: true
+
+  /prettier-plugin-tailwindcss@0.2.8(prettier-plugin-organize-imports@3.2.2)(prettier@2.8.8):
     resolution: {integrity: sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -5174,6 +5199,7 @@ packages:
         optional: true
     dependencies:
       prettier: 2.8.8
+      prettier-plugin-organize-imports: 3.2.2(prettier@2.8.8)(typescript@5.0.4)
     dev: true
 
   /prettier@2.8.8:

@@ -36,6 +36,8 @@ pnpm create hotpot -t react-desktop
 
 ## 工具 & 依赖
 
+## 脚本
+
 ## 功能
 
 - [x] 类 NextJs 约定式路由：
@@ -52,8 +54,3 @@ pnpm create hotpot -t react-desktop
 ## 预览
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/template-react-desktop)
-
-
-
-
-

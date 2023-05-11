@@ -18,9 +18,14 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://',
+        target: '//',
         // rewrite: (path) => path.replace(/^\/api/, ''),
         changeOrigin: true,
+      },
+      '/mock': {
+        target: '//',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mock/, ''),
       },
     },
   },

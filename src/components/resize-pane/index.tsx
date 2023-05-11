@@ -1,5 +1,5 @@
 import { Tooltip } from 'antd';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import './index.less';
@@ -88,7 +88,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
   return (
     <div className="resizeable-pane-container">
       <div
-        className={classnames(disableSelectClassName, 'left-pane ', leftPaneClassName)}
+        className={clsx(disableSelectClassName, 'left-pane ', leftPaneClassName)}
         style={{ width: leftPaneWidth }}
       >
         {leftPane}
@@ -119,7 +119,7 @@ const ResizePane: React.FC<RezisePaneProps> = ({
           </div>
         </Tooltip>
       </div>
-      <div className={classnames(disableSelectClassName, 'right-pane', rightPaneClassName)}>
+      <div className={clsx(disableSelectClassName, 'right-pane', rightPaneClassName)}>
         {rightPane}
       </div>
     </div>
