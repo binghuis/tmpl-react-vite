@@ -1,6 +1,6 @@
 # template-react-desktop
 
-一个 `React Desktop Site` 项目模板
+一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包
 
 ## 下载
 
