@@ -1,6 +1,8 @@
 import { defineConfig } from 'orval';
 
+// 使用本地 Swagger
 const INPUT = './src/openapi/spec.yaml';
+// 使用在线 Swagger
 const URL = '';
 
 export default defineConfig({

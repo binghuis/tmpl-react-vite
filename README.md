@@ -49,25 +49,72 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
 
 ## 使用
 
-** 一行命令生成 `TS` 类型 和 接口请求代码 **
+- 一行命令生成 `TS` 类型 和 接口请求代码
 
-工具：[orval](https://github.com/anymaniax/orval)
+  工具 & 文档：[Orval](https://github.com/anymaniax/orval)
 
-`pnpm openapi`
+  配置文件：`orval.config.ts`，设置 `Swagger` 来源，支持本地 / 在线 `Swagger` 文件
 
-> 约定式路由
+  执行脚本：`pnpm openapi`，产物生成在 `openapi/__service__` 目录，
+
+  ```bash
+  ./src/openapi/__service__
+  ├─ swagger.msw.ts          # 本地 mock 代码
+  ├─ swagger.schemas.ts      # TS 类型代码
+  └─ swagger.ts              # 接口请求代码
+  ```
+
+- 约定式路由
+
+  工具 & 文档：[Generouted](https://github.com/oedotme/generouted)
+
+  ```bash
+  ./src
+  └─ router.ts      # 路由产物代码
+  ```
 
 > 侧边栏组件配置
 
 > 面包屑组件配置
 
-> 如何写支持 亮/暗双主题 的样式
+- 如何写支持 亮/暗双主题 的样式
+
+  `Antd 5` 使用 `@ant-design/cssinjs` 支持 `CSS-in-JS` 动态主题变量切换
+
+  `@ant-design/cssinjs` 基于 `emotion` 实现
+
+  项目引入：
+
+  - `CSS` 原子类：[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
+  - `CSS-in-JS`：[emotion](https://github.com/emotion-js/emotion)
+
+  _建议使用 `tailwindcss`原子类写静态 `css`样式，与主题相关的动态样式部分则使用 `CSS-in-JS` 框架`emotion`_
+
+  `emotion` 语法如下，[token](https://ant-design.gitee.io/docs/react/customize-theme-cn#seedtoken) 是 `Antd 内部实现的主题变量`
+
+  ```tsx
+  import { css } from '@emotion/react';
+
+  css`
+    color: ${token.colorPrimary};
+    &:hover {
+      color: ${token.colorPrimaryHover};
+    }
+  `;
+  ```
 
 > 用户鉴权涉及到的配置
 
 > 函数式状态管理库 `zustand` 怎么用
 
-> 图标管理
+- 图标管理
+
+  ```bash
+  ./src/components
+  └─ icon.tsx              # IconFont 组件封装
+  ```
+
+替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物
 
 > 做了哪些代码规范配置
 
