@@ -8,9 +8,9 @@ import { PublicPaths } from '@/constant/public-paths';
 import { ThemeContext } from '@/context/theme';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Layout, Watermark, theme } from 'antd';
+import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
 
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const App = () => {
   }, []);
   const { useToken } = theme;
 
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const location = useLocation();
   const navigate = useNavigate();
   const { token } = useToken();
@@ -32,7 +32,6 @@ const App = () => {
     return <Outlet />;
   }
   const { Header, Content, Footer, Sider } = Layout;
-
   return (
     <Layout className="h-screen w-screen">
       <Sider
@@ -100,19 +99,47 @@ const App = () => {
 
       <Layout>
         <Header
-          className="flex h-12 items-center justify-end px-2"
+          className="relative flex h-12 items-center justify-end pl-2 pr-4"
           style={{
             background: token.colorBgContainer,
             borderBottomWidth: 1,
             borderBottomColor: token.colorBorderSecondary,
           }}
         >
-          <div
-            onClick={toggleTheme}
-            className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
+          <Space className="mr-24">
+            <div
+              onClick={toggleTheme}
+              className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
+            >
+              {isDark ? <Icon type="sun" size={20} /> : <Icon type="moon_stars_fill" size={22} />}
+            </div>
+          </Space>
+          <Dropdown
+            className="h-full items-center"
+            placement="bottomLeft"
+            menu={{
+              items: [
+                {
+                  label: (
+                    <Space>
+                      <PoweroffOutlined
+                        onClick={() => {
+                          logout();
+                        }}
+                      />
+                      退出登录
+                    </Space>
+                  ),
+                  key: '0',
+                },
+              ],
+            }}
           >
-            {isDark ? <Icon type="sun" size={20} /> : <Icon type="moon_stars_fill" size={22} />}
-          </div>
+            <Space className="h-full cursor-pointer">
+              <Avatar size={'small'}>{user?.name.charAt(0).toLocaleUpperCase()}</Avatar>
+              {user?.name}
+            </Space>
+          </Dropdown>
         </Header>
         <Content className="min-h-min overflow-y-auto px-2 py-1">
           <Watermark content={`${user?.id}`}>
