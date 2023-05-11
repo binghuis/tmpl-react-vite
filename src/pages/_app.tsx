@@ -59,8 +59,11 @@ const App = () => {
           >
             <img src={Logo} className="h-full" alt="" />
             {!collapse.value && (
-              <span className="text-lg" style={{ color: token.colorTextHeading }}>
-                Antd
+              <span
+                className="w-full whitespace-nowrap text-lg"
+                style={{ color: token.colorTextHeading }}
+              >
+                测试项目模板看看
               </span>
             )}
           </div>
@@ -111,7 +114,7 @@ const App = () => {
               onClick={toggleTheme}
               className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
             >
-              {isDark ? <Icon type="sun" size={20} /> : <Icon type="moon_stars_fill" size={22} />}
+              {isDark ? <Icon type="sun" size={18} /> : <Icon type="moon_stars_fill" size={20} />}
             </div>
           </Space>
           <Dropdown
