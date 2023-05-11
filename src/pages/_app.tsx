@@ -60,7 +60,7 @@ const App = () => {
             <img src={Logo} className="h-full" alt="" />
             {!collapse.value && (
               <span
-                className="w-full whitespace-nowrap text-lg"
+                className="ml-1 whitespace-nowrap text-lg"
                 style={{ color: token.colorTextHeading }}
               >
                 测试项目模板看看
