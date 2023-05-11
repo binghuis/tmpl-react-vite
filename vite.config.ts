@@ -1,4 +1,5 @@
 import generouted from '@generouted/react-router/plugin';
+import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
@@ -12,6 +13,9 @@ export default defineConfig({
       },
     }),
     generouted(),
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
   ],
   resolve: { alias: { '@': '/src' } },
   server: {
