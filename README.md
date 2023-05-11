@@ -49,9 +49,9 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
 
 ## 使用
 
-- 一行命令生成 `TS` 类型 和 接口请求代码
+- 生成 `TS` 类型 和 接口请求代码
 
-  工具 & 文档：[Orval](https://github.com/anymaniax/orval)
+  工具：[Orval](https://github.com/anymaniax/orval)
 
   配置文件：`orval.config.ts`，设置 `Swagger` 来源，支持本地 / 在线 `Swagger` 文件
 
@@ -66,7 +66,7 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
 
 - 约定式路由
 
-  工具 & 文档：[Generouted](https://github.com/oedotme/generouted)
+  工具：[Generouted](https://github.com/oedotme/generouted)
 
   ```bash
   ./src
@@ -77,18 +77,16 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
 
 > 面包屑组件配置
 
-- 如何写支持 亮/暗双主题 的样式
+- 亮/暗 主题样式
 
-  `Antd 5` 使用 `@ant-design/cssinjs` 支持 `CSS-in-JS` 动态主题变量切换
-
-  `@ant-design/cssinjs` 基于 `emotion` 实现
+  `Antd 5` 使用 `@ant-design/cssinjs` 支持 `CSS-in-JS` 动态主题变量切换，而 `@ant-design/cssinjs` 基于 `emotion` 实现
 
   项目引入：
 
-  - `CSS` 原子类：[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
-  - `CSS-in-JS`：[emotion](https://github.com/emotion-js/emotion)
+  - `CSS` 原子框架：[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
+  - `CSS-in-JS` 框架：[emotion](https://github.com/emotion-js/emotion)
 
-  _建议使用 `tailwindcss`原子类写静态 `css`样式，与主题相关的动态样式部分则使用 `CSS-in-JS` 框架`emotion`_
+  _建议使用 `tailwindcss`原子类写静态 `css`样式，与主题相关的动态样式部分则使用 `CSS-in-JS` 框架_
 
   `emotion` 语法如下，[token](https://ant-design.gitee.io/docs/react/customize-theme-cn#seedtoken) 是 `Antd 内部实现的主题变量`
 
@@ -114,9 +112,9 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
   └─ icon.tsx              # IconFont 组件封装
   ```
 
-替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物
+  替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物
 
-> 做了哪些代码规范配置
+> 代码规范相关
 
 > 代码提交流程
 
