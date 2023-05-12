@@ -57,7 +57,7 @@ const App = () => {
               navigate('/');
             }}
           >
-            <img src={Logo} className="h-full" alt="" />
+            <img src={Logo} height={48} width={48} alt="" />
             {!collapse.value && (
               <span
                 className="ml-1 whitespace-nowrap text-lg"
