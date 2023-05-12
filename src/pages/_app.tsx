@@ -1,8 +1,4 @@
-import Logo from '@/assets/logo-sm.png';
-import BreadcrumbPlus from '@/components/breadcrumbs-plus';
-import Icon from '@/components/icon';
 import MenuBar from '@/components/menu-bar';
-import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { MenuBarItems } from '@/constant/menu-bar-items';
 import { PublicPaths } from '@/constant/public-paths';
 import { ThemeContext } from '@/context/theme';
@@ -12,6 +8,10 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-des
 import { css } from '@emotion/react';
 import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
 
+import Logo from '@/assets/logo-sm.png';
+import BreadcrumbPlus from '@/components/breadcrumbs-plus';
+import IconFont from '@/components/icon-font';
+import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
@@ -31,6 +31,12 @@ const App = () => {
   if (PublicPaths.some((path) => matchPath(path, location.pathname))) {
     return <Outlet />;
   }
+  const menuIconStyle = css`
+    &:hover {
+      color: ${token.colorPrimaryHover};
+    }
+  `;
+
   const { Header, Content, Footer, Sider } = Layout;
   return (
     <Layout className="h-screen w-screen">
@@ -46,7 +52,7 @@ const App = () => {
         collapsible
         collapsed={collapse.value}
       >
-        <div className="flex h-full flex-col">
+        <div className="flex h-screen flex-col justify-between">
           <div
             className={'flex h-12 cursor-pointer items-center pl-2'}
             style={{
@@ -80,27 +86,15 @@ const App = () => {
             }}
           >
             {collapse.value ? (
-              <MenuUnfoldOutlined
-                css={css`
-                  &:hover {
-                    color: ${token.colorPrimaryHover};
-                  }
-                `}
-              />
+              <MenuUnfoldOutlined css={menuIconStyle} />
             ) : (
-              <MenuFoldOutlined
-                css={css`
-                  &:hover {
-                    color: ${token.colorPrimaryHover};
-                  }
-                `}
-              />
+              <MenuFoldOutlined css={menuIconStyle} />
             )}
           </div>
         </div>
       </Sider>
 
-      <Layout>
+      <Layout className="h-full">
         <Header
           className="relative flex h-12 items-center justify-end pl-2 pr-4"
           style={{
@@ -114,7 +108,11 @@ const App = () => {
               onClick={toggleTheme}
               className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
             >
-              {isDark ? <Icon type="sun" size={18} /> : <Icon type="moon_stars_fill" size={20} />}
+              {isDark ? (
+                <IconFont type="sun" size={18} />
+              ) : (
+                <IconFont type="moon_stars_fill" size={20} />
+              )}
             </div>
           </Space>
           <Dropdown
@@ -144,7 +142,7 @@ const App = () => {
             </Space>
           </Dropdown>
         </Header>
-        <Content className="min-h-min overflow-y-auto px-2 py-1">
+        <Content className="px-2 py-1">
           <Watermark content={`${user?.id}`}>
             <BreadcrumbPlus routes={BreadcrumbRoutes} />
             <Outlet />

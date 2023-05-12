@@ -1,4 +1,4 @@
-import Icon from '@/components/icon';
+import Icon from '@/components/icon-font';
 import { MenuBarProps } from '@/components/menu-bar';
 
 export const MenuBarItems: MenuBarProps['items'] = [

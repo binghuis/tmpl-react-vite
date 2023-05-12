@@ -19,8 +19,8 @@ export default defineConfig(({ command }) => {
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),
-      visualizer({ open: true, template: 'treemap', gzipSize: true, brotliSize: true }) as any,
-      viteCompression(),
+      visualizer({ template: 'treemap' }) as any,
+      viteCompression({ algorithm: 'brotliCompress' }),
     ],
     resolve: { alias: { '@': '/src' } },
     server: {

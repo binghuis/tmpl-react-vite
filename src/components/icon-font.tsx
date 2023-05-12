@@ -8,7 +8,7 @@ interface IconProps {
   onClick?: () => void;
 }
 
-const Icon = (props: IconProps) => {
+const IconFont = (props: IconProps) => {
   const { type, size = 14, color = 'currentColor', className, onClick } = props;
   const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/c/font_4060387_2kfwi4e4ksm.js',
@@ -30,4 +30,4 @@ const Icon = (props: IconProps) => {
   );
 };
 
-export default Icon;
+export default IconFont;

@@ -1,5 +1,5 @@
 import Logo from '@/assets/logo.png';
-import Icon from '@/components/icon';
+import Icon from '@/components/icon-font';
 import { useAuthStore } from '@/store/auth';
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
