@@ -1,6 +1,6 @@
 # template-react-desktop
 
-一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包
+🧞 一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包
 
 ## 下载
 
@@ -112,7 +112,7 @@ css`
 └─ icon.tsx           # IconFont 组件封装
 ```
 
-替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物
+替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物地址
 
 > 代码规范相关
 

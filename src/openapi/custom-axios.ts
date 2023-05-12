@@ -1,8 +1,9 @@
-import { BaseResponse } from './types';
+import { useAuthStore } from '@/store/auth';
 import { getAuthHeader } from '@/utils/auth';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
 import { StatusCodes } from 'http-status-codes';
 import { green } from 'kolorist';
+import { BaseResponse } from './types';
 
 interface IPendingVal {
   controller: AbortController;
@@ -95,7 +96,7 @@ AXIOS_INSTANCE.interceptors.request.use((c) => {
     // headers 加 token
     c.headers = {
       ...c.headers,
-      // ...getAuthHeader(token),
+      ...getAuthHeader(useAuthStore.getState().token),
     } as AxiosRequestHeaders;
   }
   const controller = new AbortController();

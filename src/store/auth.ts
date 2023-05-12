@@ -1,4 +1,3 @@
-import { StorageKeys } from '@/constant/storage';
 import { LoginForm } from '@/pages/login';
 import { StateCreator, create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
@@ -6,32 +5,33 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 interface User {
   name: string;
   id: number;
+  avatar?: string;
 }
 
-type AuthState = {
+type State = {
   token?: string;
   user: User | null;
   login: (params: LoginForm) => Promise<'success' | undefined>;
   logout: () => Promise<'success' | undefined>;
 };
 
-const defaultUser = { name: 'test', id: -1 };
+const defaultUser: User = { name: '', id: -1 };
 
-const middlewares = (initializer: StateCreator<AuthState>) =>
+const middlewares = (initializer: StateCreator<State>) =>
   devtools(
     persist(initializer, {
-      name: StorageKeys.Auth,
+      name: 'auth',
       storage: createJSONStorage(() => sessionStorage),
     }),
   );
 
-export const useAuthStore = create<AuthState>()(
+export const useAuthStore = create<State>()(
   middlewares((set) => ({
     token: '',
     user: defaultUser,
     login: async (params) => {
       // 执行登录
-      set({ user: { name: 'admin', id: 1 }, token: '123456' });
+      set({ user: { name: 'binghuis', id: 9102 }, token: `${Date.now()}` });
       return 'success';
     },
     logout: async () => {
