@@ -1,6 +1,4 @@
 import MenuBar from '@/components/menu-bar';
-import { MenuBarItems } from '@/constant/menu-bar-items';
-import { PublicPaths } from '@/constant/public-paths';
 import { ThemeContext } from '@/context/theme';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
@@ -11,7 +9,9 @@ import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
 import Logo from '@/assets/logo-sm.png';
 import BreadcrumbPlus from '@/components/breadcrumbs-plus';
 import IconFont from '@/components/icon-font';
-import { BreadcrumbRoutes } from '@/constant/breadcrumb-routes';
+import { PublicPaths } from '@/config';
+import { BreadcrumbRoutes } from '@/config/breadcrumb';
+import { SideMenuItems } from '@/config/side-menu';
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
@@ -74,7 +74,7 @@ const App = () => {
             )}
           </div>
           <div className="flex-grow">
-            <MenuBar items={MenuBarItems} className="border-r-0" />
+            <MenuBar items={SideMenuItems} className="border-r-0" />
           </div>
           <div
             onClick={collapse.toggle}

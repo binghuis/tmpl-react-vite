@@ -1,5 +1,5 @@
 import { theme } from 'antd';
-import React, { PropsWithChildren, createContext, useEffect } from 'react';
+import { PropsWithChildren, createContext } from 'react';
 import { useBoolean, useMediaQuery } from 'usehooks-ts';
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
