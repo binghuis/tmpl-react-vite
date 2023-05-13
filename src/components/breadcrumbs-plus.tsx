@@ -16,8 +16,6 @@ const itemRender = (
   paths: string[],
 ) => {
   if (item?.title && typeof item?.title === 'object' && 'props' in item?.title) {
-    console.log(item.title.props);
-
     const { match, children } = item.title.props;
     if (match) {
       return item.title;

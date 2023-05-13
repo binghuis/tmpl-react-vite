@@ -104,7 +104,7 @@ const App = () => {
             borderBottomColor: token.colorBorderSecondary,
           }}
         >
-          <Space className="mr-24">
+          <Space className="mr-12">
             <div
               onClick={toggleTheme}
               className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
