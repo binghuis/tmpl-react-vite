@@ -9,8 +9,31 @@ export const SideMenuItems: MenuBarProps['items'] = [
     icon: <IconFont type="dashboard" />,
   },
   {
-    label: 'Demo',
-    path: '/demo',
+    label: '嵌套路由',
+    path: '/nested',
     icon: <IconFont type="dashboard" />,
+  },
+  {
+    label: '嵌套路由-1',
+    key: 'nested-1',
+    icon: <IconFont type="dashboard" />,
+    children: [
+      {
+        label: '嵌套路由-1-1',
+        path: '/nested/nested-1',
+        icon: <IconFont type="dashboard" />,
+      },
+      {
+        label: '嵌套路由-1-2',
+        path: '/nested/nested-1/nested-1-2',
+        icon: <IconFont type="dashboard" />,
+      },
+    ],
+  },
+  {
+    label: '动态路由',
+    path: '/dynamic',
+    icon: <IconFont type="dashboard" />,
+    related: ['/related'],
   },
 ];

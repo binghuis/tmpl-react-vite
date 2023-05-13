@@ -1,11 +1,11 @@
 import Page from '@/components/page';
 import { Link } from '@/router';
 
-const DemoPage = () => {
+const PageHome = () => {
   return (
     <Page>
-      <Link to={'/demo'}>index</Link>
+      <Link to={'/'}>Home</Link>
     </Page>
   );
 };
-export default DemoPage;
+export default PageHome;

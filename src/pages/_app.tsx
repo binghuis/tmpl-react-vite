@@ -15,6 +15,7 @@ import { SideMenuItems } from '@/config/side-menu';
 import { useContext, useEffect } from 'react';
 import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
+
 const App = () => {
   useEffect(() => {
     iHttp.joke();
@@ -137,7 +138,9 @@ const App = () => {
             }}
           >
             <Space className="h-full cursor-pointer">
-              <Avatar size={'small'}>{user?.name.charAt(0).toLocaleUpperCase()}</Avatar>
+              <Avatar size={'small'} src={user?.avatar}>
+                {user?.name.charAt(0).toLocaleUpperCase()}
+              </Avatar>
               {user?.name}
             </Space>
           </Dropdown>

@@ -1,11 +1,6 @@
 import Page from '@/components/page';
-import { Link } from '@/router';
 
-const DemoPage = () => {
-  return (
-    <Page>
-      <Link to={'/demo'}>404</Link>
-    </Page>
-  );
+const Page404 = () => {
+  return <Page>404</Page>;
 };
-export default DemoPage;
+export default Page404;

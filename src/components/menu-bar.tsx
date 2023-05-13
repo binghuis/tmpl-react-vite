@@ -2,7 +2,7 @@ import { Path } from '@/router';
 import { Menu, MenuProps } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { useEffect, useState } from 'react';
-import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import { Link, matchPath, useLocation } from 'react-router-dom';
 
 interface ItemBase {
   icon?: React.ReactNode;
@@ -31,7 +31,7 @@ export interface MenuBarProps
 const INDEX = '/';
 
 const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
-  const { items, ...restProps } = props;
+  const { items, mode = 'inline', ...restProps } = props;
   const [selectedKey, setSelectedKey] = useState<string>(INDEX);
   const [openKeys, setOpenKeys] = useState<string[]>();
 
@@ -119,6 +119,7 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
   return (
     <Menu
       {...restProps}
+      mode={mode}
       selectedKeys={[selectedKey]}
       openKeys={openKeys}
       onOpenChange={setOpenKeys}
