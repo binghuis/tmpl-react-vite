@@ -19,13 +19,13 @@ export const SideMenuItems: MenuBarProps['items'] = [
     icon: <IconFont type="dashboard" />,
     children: [
       {
-        label: '嵌套路由-1-1',
+        label: '嵌套路由-1',
         path: '/nested/nested-1',
         icon: <IconFont type="dashboard" />,
       },
       {
-        label: '嵌套路由-1-2',
-        path: '/nested/nested-1/nested-1-2',
+        label: '嵌套路由-1-1',
+        path: '/nested/nested-1/nested-1-1',
         icon: <IconFont type="dashboard" />,
       },
     ],

@@ -11,7 +11,7 @@ export type Path =
   | `/login`
   | `/nested`
   | `/nested/nested-1`
-  | `/nested/nested-1/nested-1-2`
+  | `/nested/nested-1/nested-1-1`
   | `/related`
 
 export type Params = {

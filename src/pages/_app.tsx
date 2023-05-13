@@ -145,7 +145,7 @@ const App = () => {
             </Space>
           </Dropdown>
         </Header>
-        <Content className="flex-grow px-2 py-1">
+        <Content className="flex-grow px-2 py-1" style={{ color: token.colorText }}>
           <BreadcrumbPlus routes={BreadcrumbRoutes} />
           <Watermark className="h-full" content={`${user?.id}`}>
             <Outlet />
