@@ -24,7 +24,9 @@ const BreadcrumbPlus = (props: BreadcrumbPlusProps) => {
   const breadcrumbs = useBreadcrumbs(routes, { disableDefaults: true });
 
   const renderBreadcrumbs = () => {
-    if (!breadcrumbs || breadcrumbs.length < 2) {
+    console.log(breadcrumbs);
+
+    if (breadcrumbs && breadcrumbs.length < 2) {
       return null;
     }
     return (
