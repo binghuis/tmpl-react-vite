@@ -1,7 +1,6 @@
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import React, { PropsWithChildren } from 'react';
-import { useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { useIsMounted } from 'usehooks-ts';
 
 NProgress.configure({ showSpinner: false });

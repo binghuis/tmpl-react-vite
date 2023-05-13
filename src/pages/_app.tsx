@@ -95,7 +95,7 @@ const App = () => {
         </div>
       </Sider>
 
-      <Layout className="h-full">
+      <Layout className="flex h-full flex-col">
         <Header
           className="relative flex h-12 items-center justify-end pl-2 pr-4"
           style={{
@@ -145,9 +145,9 @@ const App = () => {
             </Space>
           </Dropdown>
         </Header>
-        <Content className="px-2 py-1">
-          <Watermark content={`${user?.id}`}>
-            <BreadcrumbPlus routes={BreadcrumbRoutes} />
+        <Content className="flex-grow px-2 py-1">
+          <BreadcrumbPlus routes={BreadcrumbRoutes} />
+          <Watermark className="h-full" content={`${user?.id}`}>
             <Outlet />
           </Watermark>
         </Content>

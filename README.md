@@ -1,6 +1,6 @@
 # template-react-desktop
 
-🧞 一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包
+一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包，`brotli` 算法压缩
 
 ## 下载
 
@@ -9,6 +9,10 @@
 ```
 pnpm create hotpot -t react-desktop
 ```
+
+## 预览
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/template-react-desktop)
 
 ## 部分目录解释
 
@@ -117,7 +121,3 @@ css`
 > 代码规范相关
 
 > 代码提交流程
-
-## 预览
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/template-react-desktop)
