@@ -20,7 +20,7 @@ pnpm create hotpot -t react-desktop
 .
 ├─ src
 │  ├─ components                # 公共业务组件
-│  ├─ constant                  # 常量存储
+│  ├─ config                    # 各个工具配置
 │  ├─ libs                      # 第三方库文件
 │  ├─ openapi                   # OpenAPI 相关配置 & 产物
 │  │  ├─ __service__            # 生成产物：TS 类型 & 接口请求方法
@@ -32,8 +32,7 @@ pnpm create hotpot -t react-desktop
 │  ├─ types                     # 类型管理
 │  ├─ utils                     # 工具封装
 │  └─ router.ts                 # 自动生成产物：约定式路由相关
-├─ orval.config.ts              # 配置产物 openapi/__service__
-└─ rome.json                    # formatter & linter
+└─ orval.config.ts              # 配置产物 openapi/__service__
 ```
 
 _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [pnpm](https://pnpm.io/installation)_
@@ -79,7 +78,21 @@ _项目强制使用 `pnpm` 作为包管理工具，启动项目前请先安装 [
 
 ### 侧边栏
 
+示例包括动态路由，嵌套路由以及关联路由配置
+
+```bash
+./src/config
+└─ side-menu.tsx     # 侧边栏配置
+```
+
 ### 面包屑
+
+示例包括常规路由和动态路由面包屑的处理
+
+```bash
+./src/config
+└─ breadcrumb.tsx     # 面包屑配置
+```
 
 ### 亮/暗 主题样式
 
@@ -105,9 +118,14 @@ css`
 `;
 ```
 
-### 用户鉴权
+### 用户鉴权 & 函数式状态管理库 `zustand`
 
-### 函数式状态管理库 `zustand`
+全局状态管理工具使用 [zustand](https://github.com/pmndrs/zustand) 示例代码为用户鉴权模块
+
+```bash
+./src/store
+└─ auth.ts     # 鉴权模块
+```
 
 ### 图标管理
 
@@ -119,5 +137,17 @@ css`
 替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物地址
 
 > 代码规范相关
+
+为什么没有选 `Rust` 生态的 `formatter` 和 `linter` ？
+
+- [Rome@12.1.0](https://github.com/rome/tools) 仅支持 `TS`，`JS` 和 `JSON`，而且不支持 `CSS-in-JS`，目前仅适合在小型项目中使用，优点是配置简单，仅需一个配置文件即可实现 `formatter`，`linter`
+
+- [dprint@0.36.1](https://github.com/dprint/dprint) 是 `Rust` 实现的 `formatter` 工具，它不同于 `Perttier` 和 `Rome` 那么顽固，配置自由度更高，但目前依然处于 `early development`，且需要配合 `linter` 工具使用，目前仍不成熟，但非常值得关注
+
+_`Eslint` 相关配置_
+
+_`Prettier` 相关配置_
+
+_`Stylelint` 相关配置_
 
 > 代码提交流程
