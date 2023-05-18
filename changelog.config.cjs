@@ -1,30 +1,15 @@
 module.exports = {
   disableEmoji: false,
-  format: '{type}{scope}: {emoji}{subject}',
+  format: '{type}: {subject}',
   list: ['feat', 'fix', 'chore', 'test', 'refactor', 'perf', 'docs', 'ci'],
   maxMessageLength: 64,
   minMessageLength: 3,
-  questions: ['type', 'body'],
+  questions: ['type', 'subject', 'body'],
   scopes: [],
   types: {
-    chore: {
-      description: '构建过程或辅助工具的变更',
-      emoji: '🤖',
-      value: 'chore',
-    },
-    ci: {
-      description: '与持续集成相关的变更',
-      emoji: '🎡',
-      value: 'ci',
-    },
-    docs: {
-      description: '仅文档更改',
-      emoji: '📝',
-      value: 'docs',
-    },
     feat: {
       description: '新功能',
-      emoji: '🎸',
+      emoji: '✨',
       value: 'feat',
     },
     fix: {
@@ -32,24 +17,44 @@ module.exports = {
       emoji: '🐛',
       value: 'fix',
     },
+    docs: {
+      description: '文档更新',
+      emoji: '📝',
+      value: 'docs',
+    },
     perf: {
-      description: '提升性能',
+      description: '性能优化',
       emoji: '🚀',
       value: 'perf',
     },
     refactor: {
-      description: '代码逻辑重构',
+      description: '重构',
       emoji: '💡',
       value: 'refactor',
     },
     test: {
-      description: '代码测试',
+      description: '测试',
       emoji: '💍',
       value: 'test',
     },
-    messages: {
-      type: '请选择您正在提交的更改类型：',
-      body: '请提供详细的更改描述：\n ',
+    chore: {
+      description: '构建/配置/工具变更',
+      emoji: '🔧',
+      value: 'chore',
     },
+    ci: {
+      description: '部署/持续集成变更',
+      emoji: '🤖',
+      value: 'ci',
+    },
+  },
+  messages: {
+    type: '选择您正在提交的更改类型：',
+    subject: '以简短的祈使语描述更改：\n',
+    body: '提供更详细的更改描述：\n',
+    // customScope: '选择此组件影响的范围：',
+    // breaking: '列出任何破坏性更改：\n',
+    // footer: '此提交关闭的问题，例如 #123：',
+    // confirmCommit: '此提交影响的包：\n',
   },
 };
