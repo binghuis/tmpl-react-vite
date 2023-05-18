@@ -152,6 +152,6 @@ _`Stylelint` 相关配置_
 
 ### 代码提交流程
 
-开发调试：`pnpm dev`
-开发模拟正式：`pnpm build & pnpm preview`
-正式版提交：`pnpm release`
+- 开发调试：`pnpm dev`
+- 开发模拟正式：`pnpm build & pnpm preview`
+- 正式版提交：`pnpm release`

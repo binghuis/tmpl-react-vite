@@ -48,6 +48,8 @@
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
@@ -73,5 +75,10 @@
     "use-react-router-breadcrumbs": "^4.0.1",
     "vite": "^4.3.7",
     "vite-plugin-compression": "^0.5.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
