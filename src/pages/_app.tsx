@@ -9,11 +9,12 @@ import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
 import Logo from '@/assets/logo-sm.png';
 import BreadcrumbPlus from '@/components/breadcrumbs-plus';
 import IconFont from '@/components/icon-font';
-import { PublicPaths } from '@/config';
+import { isPublicPath } from '@/config';
 import { BreadcrumbRoutes } from '@/config/breadcrumb';
 import { SideMenuItems } from '@/config/side-menu';
+import { Navigate } from '@/router';
 import { useContext, useEffect } from 'react';
-import { Outlet, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
 
 const App = () => {
@@ -23,13 +24,15 @@ const App = () => {
   const { useToken } = theme;
 
   const { user, logout } = useAuthStore();
-  const location = useLocation();
   const navigate = useNavigate();
   const { token } = useToken();
   const collapse = useBoolean();
   const { toggleTheme, isDark } = useContext(ThemeContext);
-
-  if (PublicPaths.some((path) => matchPath(path, location.pathname))) {
+  const { token: isAuth } = useAuthStore();
+  if (!isPublicPath() && !isAuth) {
+    return <Navigate to={'/login'} replace />;
+  }
+  if (isPublicPath()) {
     return <Outlet />;
   }
   const menuIconStyle = css`

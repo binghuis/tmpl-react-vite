@@ -4,9 +4,7 @@ interface IAuthHeader {
   auth_token: string;
 }
 
-export const getAuthHeader = (
-  token?: string,
-): IAuthHeader | Record<string, never> => {
+export const getAuthHeader = (token?: string): IAuthHeader | Record<string, never> => {
   return token
     ? {
         Authorization: `Bearer ${token}`,
