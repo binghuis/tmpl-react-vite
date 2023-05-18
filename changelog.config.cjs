@@ -1,7 +1,7 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}{scope}: {emoji}{subject}',
-  list: ['feat', 'fix', 'chore', 'test', 'refactor', 'style', 'perf', 'docs', 'ci'],
+  list: ['feat', 'fix', 'chore', 'test', 'refactor', 'perf', 'docs', 'ci'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'body'],
@@ -19,7 +19,7 @@ module.exports = {
     },
     docs: {
       description: '仅文档更改',
-      emoji: '✏️',
+      emoji: '📝',
       value: 'docs',
     },
     feat: {
@@ -34,18 +34,13 @@ module.exports = {
     },
     perf: {
       description: '提升性能',
-      emoji: '⚡️',
+      emoji: '🚀',
       value: 'perf',
     },
     refactor: {
       description: '代码逻辑重构',
       emoji: '💡',
       value: 'refactor',
-    },
-    style: {
-      description: '仅样式调整',
-      emoji: '💄',
-      value: 'style',
     },
     test: {
       description: '代码测试',
