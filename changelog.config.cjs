@@ -1,6 +1,6 @@
 module.exports = {
   disableEmoji: false,
-  format: '{type}: {subject}',
+  format: '{emoji} {type}: {subject}',
   list: ['feat', 'fix', 'chore', 'test', 'refactor', 'perf', 'docs', 'ci'],
   maxMessageLength: 64,
   minMessageLength: 3,
@@ -52,9 +52,5 @@ module.exports = {
     type: '选择您正在提交的更改类型：',
     subject: '以简短的祈使语描述更改：\n',
     body: '提供更详细的更改描述：\n',
-    // customScope: '选择此组件影响的范围：',
-    // breaking: '列出任何破坏性更改：\n',
-    // footer: '此提交关闭的问题，例如 #123：',
-    // confirmCommit: '此提交影响的包：\n',
   },
 };
