@@ -4,7 +4,7 @@ module.exports = {
   list: ['feat', 'fix', 'chore', 'test', 'refactor', 'style', 'perf', 'docs', 'ci'],
   maxMessageLength: 64,
   minMessageLength: 3,
-  questions: ['type', 'scope', 'subject', 'body', 'breaking', 'issues', 'lerna'],
+  questions: ['type', 'scope', 'subject', 'body', 'breaking'],
   scopes: [],
   types: {
     chore: {
