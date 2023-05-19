@@ -1,7 +1,7 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}: {subject}',
-  list: ['feat', 'fix', 'chore', 'test', 'refactor', 'perf', 'docs', 'ci'],
+  list: ['feat', 'fix', 'test', 'refactor', 'chore', 'perf', 'ci', 'docs'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'subject', 'body'],
@@ -9,7 +9,7 @@ module.exports = {
   types: {
     feat: {
       description: '新功能',
-      emoji: '✨',
+      emoji: '🎉',
       value: 'feat',
     },
     fix: {
@@ -17,35 +17,35 @@ module.exports = {
       emoji: '🐛',
       value: 'fix',
     },
-    docs: {
-      description: '文档更新',
-      emoji: '📝',
-      value: 'docs',
-    },
-    perf: {
-      description: '性能优化',
-      emoji: '🚀',
-      value: 'perf',
+    test: {
+      description: '测试',
+      emoji: '💊',
+      value: 'test',
     },
     refactor: {
       description: '重构',
-      emoji: '💡',
+      emoji: '👍',
       value: 'refactor',
-    },
-    test: {
-      description: '测试',
-      emoji: '💍',
-      value: 'test',
     },
     chore: {
       description: '构建/配置/工具变更',
       emoji: '🔧',
       value: 'chore',
     },
+    perf: {
+      description: '性能优化',
+      emoji: '🚀',
+      value: 'perf',
+    },
     ci: {
       description: '部署/持续集成变更',
       emoji: '🤖',
       value: 'ci',
+    },
+    docs: {
+      description: '文档更新',
+      emoji: '📝',
+      value: 'docs',
     },
   },
   messages: {
