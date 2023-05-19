@@ -24,7 +24,7 @@ module.exports = {
     },
     refactor: {
       description: '重构',
-      emoji: '👍',
+      emoji: '💡',
       value: 'refactor',
     },
     chore: {
