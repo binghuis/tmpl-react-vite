@@ -17,45 +17,45 @@
  * ources/openapi.yaml)
  */
 export type LoginUserParams = {
-  /**
-   * The user name for login
-   */
-  username?: string;
-  /**
-   * The password for login in clear text
-   */
-  password?: string;
+/**
+ * The user name for login
+ */
+username?: string;
+/**
+ * The password for login in clear text
+ */
+password?: string;
 };
 
-export type GetInventory200 = { [key: string]: number };
+export type GetInventory200 = {[key: string]: number};
 
 export type UploadFileParams = {
-  /**
-   * Additional Metadata
-   */
-  additionalMetadata?: string;
+/**
+ * Additional Metadata
+ */
+additionalMetadata?: string;
 };
 
 export type UpdatePetWithFormParams = {
-  /**
-   * Name of pet that needs to be updated
-   */
-  name?: string;
-  /**
-   * Status of pet that needs to be updated
-   */
-  status?: string;
+/**
+ * Name of pet that needs to be updated
+ */
+name?: string;
+/**
+ * Status of pet that needs to be updated
+ */
+status?: string;
 };
 
 export type FindPetsByTagsParams = {
-  /**
-   * Tags to filter by
-   */
-  tags?: string[];
+/**
+ * Tags to filter by
+ */
+tags?: string[];
 };
 
-export type FindPetsByStatusStatus =
-  (typeof FindPetsByStatusStatus)[keyof typeof FindPetsByStatusStatus];
+export type FindPetsByStatusStatus = typeof FindPetsByStatusStatus[keyof typeof FindPetsByStatusStatus];
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const FindPetsByStatusStatus = {
@@ -65,10 +65,10 @@ export const FindPetsByStatusStatus = {
 } as const;
 
 export type FindPetsByStatusParams = {
-  /**
-   * Status values that need to be considered for filter
-   */
-  status?: FindPetsByStatusStatus;
+/**
+ * Status values that need to be considered for filter
+ */
+status?: FindPetsByStatusStatus;
 };
 
 /**
@@ -85,7 +85,8 @@ export interface ApiResponse {
 /**
  * pet status in the store
  */
-export type PetStatus = (typeof PetStatus)[keyof typeof PetStatus];
+export type PetStatus = typeof PetStatus[keyof typeof PetStatus];
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PetStatus = {
@@ -147,7 +148,8 @@ export interface Customer {
 /**
  * Order Status
  */
-export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
+export type OrderStatus = typeof OrderStatus[keyof typeof OrderStatus];
+
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const OrderStatus = {
@@ -165,3 +167,4 @@ export interface Order {
   status?: OrderStatus;
   complete?: boolean;
 }
+
