@@ -111,20 +111,14 @@ export const ThemeToggler: React.FC<Props> = ({
     >
       <mask id={id}>
         <rect x="0" y="0" width="100%" height="100%" fill="white" />
-        <animated.circle
-          // @ts-ignore
-          style={maskedCircleProps}
-          r="9"
-          fill="black"
-        />
+        <animated.circle style={maskedCircleProps as SVGProps} r="9" fill="black" />
       </mask>
 
       <animated.circle
         cx="12"
         cy="12"
         fill={checked ? moonColor : sunColor}
-        // @ts-ignore
-        style={centerCircleProps}
+        style={centerCircleProps as SVGProps}
         mask={`url(#${id})`}
       />
       <animated.g stroke="currentColor" style={linesProps}>
