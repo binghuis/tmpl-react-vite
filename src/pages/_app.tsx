@@ -107,7 +107,7 @@ const App = () => {
             borderBottomColor: token.colorBorderSecondary,
           }}
         >
-          <Space className="mr-12">
+          <Space className="mr-12 flex h-full items-center ">
             <div
               onClick={toggleTheme}
               className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
