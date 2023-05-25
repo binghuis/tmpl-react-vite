@@ -39,4 +39,11 @@
     "[less]": {
         "editor.defaultFormatter": "stylelint.vscode-stylelint"
     },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+        ".prettierrc": ".prettierignore",
+        ".czrc": "changelog.config.cjs",
+        ".eslintrc": ".eslintignore",
+    },
 }

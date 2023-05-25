@@ -110,12 +110,12 @@ const App = () => {
           <Space className="mr-12 flex h-full items-center ">
             <div
               onClick={toggleTheme}
-              className="flex cursor-pointer opacity-60 duration-300 hover:opacity-95"
+              className="flex cursor-pointer opacity-75 duration-300 hover:opacity-95"
             >
               {isDark ? (
-                <IconFont type="sun" size={18} />
-              ) : (
                 <IconFont type="moon_stars_fill" size={20} />
+              ) : (
+                <IconFont type="sun" size={18} />
               )}
             </div>
           </Space>
