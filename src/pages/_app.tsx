@@ -1,18 +1,17 @@
+import Logo from '@/assets/logo-sm.png';
+import BreadcrumbPlus from '@/components/breadcrumbs-plus';
 import MenuBar from '@/components/menu-bar';
+import { ThemeToggler } from '@/components/theme-toggler';
+import { isPublicPath } from '@/config';
+import { BreadcrumbRoutes } from '@/config/breadcrumb';
+import { SideMenuItems } from '@/config/side-menu';
 import { ThemeContext } from '@/context/theme';
+import { Navigate } from '@/router';
 import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
-
-import Logo from '@/assets/logo-sm.png';
-import BreadcrumbPlus from '@/components/breadcrumbs-plus';
-import IconFont from '@/components/icon-font';
-import { isPublicPath } from '@/config';
-import { BreadcrumbRoutes } from '@/config/breadcrumb';
-import { SideMenuItems } from '@/config/side-menu';
-import { Navigate } from '@/router';
 import { useContext, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
@@ -107,17 +106,8 @@ const App = () => {
             borderBottomColor: token.colorBorderSecondary,
           }}
         >
-          <Space className="mr-12 flex h-full items-center ">
-            <div
-              onClick={toggleTheme}
-              className="flex cursor-pointer opacity-75 duration-300 hover:opacity-95"
-            >
-              {isDark ? (
-                <IconFont type="moon_stars_fill" size={20} />
-              ) : (
-                <IconFont type="sun" size={18} />
-              )}
-            </div>
+          <Space className="mr-12 flex h-full items-center">
+            <ThemeToggler onChange={toggleTheme} checked={isDark} size={18} />
           </Space>
           <Dropdown
             className="h-full items-center"
