@@ -2,7 +2,7 @@ import { useAuthStore } from '@/store/auth';
 import { getAuthHeader } from '@/utils/auth';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { green } from 'kolorist';
+import { green } from 'kleur/colors';
 import { BaseResponse } from './types';
 
 interface IPendingVal {

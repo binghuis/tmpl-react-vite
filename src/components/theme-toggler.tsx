@@ -9,7 +9,7 @@ export const defaultProperties = {
     },
     mask: {
       cx: '50%',
-      cy: '23%',
+      cy: '18%',
     },
     svg: {
       transform: 'rotate(55deg)',
