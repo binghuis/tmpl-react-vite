@@ -1,8 +1,10 @@
 import Logo from '@/assets/logo.png';
 import Icon from '@/components/icon-font';
+import { ThemeToggler } from '@/components/theme-toggler';
+import { ThemeContext } from '@/context/theme';
 import { useAuthStore } from '@/store/auth';
-import { Button, Form, Input } from 'antd';
-import { useState } from 'react';
+import { Button, Form, Input, theme } from 'antd';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export interface LoginForm {
   account: string;
@@ -31,10 +33,21 @@ const PageLogin: React.FC = () => {
     });
     setFormValid(!invalid);
   };
+  const { toggleTheme, isDark } = useContext(ThemeContext);
+  const { useToken } = theme;
+
+  const { token } = useToken();
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
-      <div className="rounded-md bg-blue-50 px-4 py-8 shadow-lg">
+    <div
+      className="flex h-screen w-screen items-center justify-center"
+      style={{
+        background: token.colorBgContainer,
+      }}
+    >
+      <div>
+        <ThemeToggler onChange={toggleTheme} checked={isDark} size={32} />
+
         <div className="mx-auto w-40">
           <img src={Logo} alt="" width="100%" />
         </div>
