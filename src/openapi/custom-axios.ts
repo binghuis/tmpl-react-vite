@@ -1,10 +1,10 @@
 import { useAuthStore } from '@/store/auth';
 import { getAuthHeader } from '@/utils/auth';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
+import { consola } from 'consola';
 import { StatusCodes } from 'http-status-codes';
-import { green } from 'kleur/colors';
+import { green, yellow } from 'kleur/colors';
 import { BaseResponse } from './types';
-
 interface IPendingVal {
   controller: AbortController;
   time: number; // ms
@@ -31,7 +31,7 @@ class DuplicateRequestsController {
       return acc;
     }, {});
     if (this.hasPending(key)) {
-      console.warn(`${key} 连续请求，本次被忽略`);
+      console.info(yellow(`连续请求，本次忽略 ${key}`));
       controller.abort();
     } else {
       this.pending[key] = {
@@ -55,7 +55,7 @@ class DuplicateRequestsController {
     const uri = axios.getUri(config);
     const key = `${config.method?.toUpperCase()} ${uri}`;
     if (!import.meta.env.PROD) {
-      console.log(green(`${flag}: ${key}`));
+      console.info(green(`${flag}: ${key}`));
     }
     return key;
   };
@@ -103,7 +103,7 @@ AXIOS_INSTANCE.interceptors.request.use((c) => {
   const key = duplicateRequestsController.genRequestKey(c, 'request');
   duplicateRequestsController.addPending(key, controller);
   return { ...c, signal: controller.signal };
-}, console.warn);
+}, consola.warn);
 
 AXIOS_INSTANCE.interceptors.response.use(
   (res: AxiosResponse<BaseResponse>) => {
@@ -120,7 +120,7 @@ AXIOS_INSTANCE.interceptors.response.use(
     return res;
   },
   (error) => {
-    console.warn(error.message);
+    consola.warn(error.message);
   },
 );
 
@@ -129,7 +129,7 @@ export const ax = <T>(config: AxiosRequestConfig): Promise<T> => {
     ...config,
   })
     .then(({ data }) => data)
-    .catch(console.warn);
+    .catch(consola.warn);
 };
 
 const request = (method: Method) => {
