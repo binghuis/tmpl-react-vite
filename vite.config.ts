@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
-import turboConsole from "vite-plugin-turbo-console";
+import turboConsole from 'vite-plugin-turbo-console';
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
@@ -22,22 +22,22 @@ export default defineConfig(({ command }) => {
       }),
       visualizer({ template: 'treemap' }) as any,
       viteCompression({ algorithm: 'brotliCompress' }),
-      turboConsole()
+      turboConsole(),
     ],
     resolve: { alias: { '@': '/src' } },
     server: {
       host: true,
-      proxy: {
-        '/api': {
-          target: '//',
-          changeOrigin: true,
-        },
-        '/mock': {
-          target: '//',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/mock/, ''),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://',
+      //     changeOrigin: true,
+      //   },
+      //   '/mock': {
+      //     target: 'https://',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/mock/, ''),
+      //   },
+      // },
     },
   };
 });
