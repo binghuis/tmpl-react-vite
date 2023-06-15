@@ -8,6 +8,12 @@ import turboConsole from 'vite-plugin-turbo-console';
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
+    esbuild: {
+      drop: ['debugger'],
+    },
+    css: {
+      devSourcemap: true,
+    },
     build: { sourcemap: command === 'serve' },
     plugins: [
       react({
@@ -26,6 +32,7 @@ export default defineConfig(({ command }) => {
     ],
     resolve: { alias: { '@': '/src' } },
     server: {
+      open: true,
       host: true,
       // proxy: {
       //   '/api': {
