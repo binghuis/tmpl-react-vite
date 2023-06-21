@@ -41,9 +41,7 @@
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
-        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
-        ".prettierrc": ".prettierignore",
-        ".czrc": "changelog.config.cjs",
-        ".eslintrc": ".eslintignore",
-    },
+        "package.json": ".prettierrc, .prettierignore, .czrc, .eslintrc, .eslintignore, tsconfig.json, postcss.config.cjs, changelog.config.cjs, .release-it.json, .stylelintrc, orval.config.ts, .npmrc, .nvmrc",
+        ".env.development": ".env.mock, .env.production"
+    }
 }
