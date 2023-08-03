@@ -42,7 +42,7 @@ const App = () => {
 
   const { Header, Content, Footer, Sider } = Layout;
   return (
-    <Layout className="h-screen w-screen">
+    <Layout className="h-screen w-screen overflow-hidden">
       <Sider
         width={256}
         style={{
@@ -97,7 +97,7 @@ const App = () => {
         </div>
       </Sider>
 
-      <Layout className="flex h-full flex-col">
+      <Layout className="flex h-full flex-col overflow-y-auto">
         <Header
           className="relative flex h-12 items-center justify-end pl-2 pr-4"
           style={{
