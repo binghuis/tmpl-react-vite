@@ -5,10 +5,10 @@ import { useIsMounted } from 'usehooks-ts';
 
 NProgress.configure({ showSpinner: false });
 
-export type PageProps = {};
+export type PageProps = { title?: string };
 
 const Page = (props: PropsWithChildren<PageProps>) => {
-  const { children } = props;
+  const { children, title } = props;
   const isMounted = useIsMounted();
 
   if (!isMounted()) {
@@ -19,7 +19,12 @@ const Page = (props: PropsWithChildren<PageProps>) => {
     NProgress.done();
   }, []);
 
-  return <>{children}</>;
+  return (
+    <div>
+      <div className="py-1 text-lg">{title}</div>
+      {children}
+    </div>
+  );
 };
 
 export default Page;
