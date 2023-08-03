@@ -209,7 +209,7 @@ const deleteOrder = (
 const createUser = (
     user: User,
  ) => {
-      return ax<unknown>(
+      return ax<User>(
       {url: `/user`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: user
@@ -251,7 +251,7 @@ const loginUser = (
 const logoutUser = (
     
  ) => {
-      return ax<unknown>(
+      return ax<void>(
       {url: `/user/logout`, method: 'get'
     },
       );
@@ -277,7 +277,7 @@ const updateUser = (
     username: string,
     user: User,
  ) => {
-      return ax<unknown>(
+      return ax<void>(
       {url: `/user/${username}`, method: 'put',
       headers: {'Content-Type': 'application/json', },
       data: user

@@ -4,6 +4,8 @@
 
 ## 下载
 
+TODO: 下载之后自动 `git init`
+
 无需安装，本地直接执行 [create-hotpot](https://github.com/binghuis/create-hotpot) `CLI` 命令
 
 ```

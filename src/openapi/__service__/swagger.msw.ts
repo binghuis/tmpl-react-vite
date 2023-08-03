@@ -36,7 +36,7 @@ export const getGetPetByIdMock = () => ({id: faker.helpers.arrayElement([faker.d
 export const getUploadFileMock = () => ({code: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), type: faker.helpers.arrayElement([faker.random.word(), undefined]), message: faker.helpers.arrayElement([faker.random.word(), undefined])})
 
 export const getGetInventoryMock = () => ({
-        'cli12tezs0000cucb3uqweoky': faker.datatype.number({min: undefined, max: undefined})
+        'clkuoke3f0000y2fyh516axy5': faker.datatype.number({min: undefined, max: undefined})
       })
 
 export const getPlaceOrderMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered']), undefined]), complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined])})
