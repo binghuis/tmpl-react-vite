@@ -11,7 +11,7 @@ import iHttp from '@/service/http';
 import { useAuthStore } from '@/store/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Avatar, Dropdown, Layout, Space, Watermark, theme } from 'antd';
+import { Avatar, Button, Dropdown, Layout, Space, Watermark, theme } from 'antd';
 import { useContext, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
@@ -116,14 +116,17 @@ const App = () => {
               items: [
                 {
                   label: (
-                    <Space>
-                      <PoweroffOutlined
-                        onClick={() => {
-                          logout();
-                        }}
-                      />
+                    <Button
+                      size="small"
+                      danger
+                      type="link"
+                      onClick={() => {
+                        logout();
+                      }}
+                      icon={<PoweroffOutlined />}
+                    >
                       退出登录
-                    </Space>
+                    </Button>
                   ),
                   key: '0',
                 },

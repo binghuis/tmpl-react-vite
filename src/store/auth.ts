@@ -1,7 +1,7 @@
 import { LoginForm } from '@/pages/login';
+import { createBrowserHistory } from 'history';
 import { StateCreator, create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
-
 interface User {
   name: string;
   id: number;
@@ -16,7 +16,7 @@ type State = {
 };
 
 const defaultUser: User = { name: '', id: -1 };
-
+const history = createBrowserHistory();
 const middlewares = (initializer: StateCreator<State>) =>
   devtools(
     persist(initializer, {
@@ -35,7 +35,8 @@ export const useAuthStore = create<State>()(
       return 'success';
     },
     logout: async () => {
-      set({ user: defaultUser });
+      set({ user: defaultUser, token: '' });
+      history.push('/');
       return 'success';
     },
   })),
