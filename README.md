@@ -4,10 +4,6 @@
 
 ## 下载
 
-TODO:
-下载之后自动 `git init`
-Main 布局问题 footer 无法显示
-
 无需安装，本地直接执行 [create-hotpot](https://github.com/binghuis/create-hotpot) `CLI` 命令
 
 ```
