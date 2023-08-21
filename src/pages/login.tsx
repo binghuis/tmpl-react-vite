@@ -2,7 +2,7 @@ import Logo from '@/assets/logo.png';
 import Icon from '@/components/icon-font';
 import { ThemeToggler } from '@/components/theme-toggler';
 import { ThemeContext } from '@/context/theme';
-import { useAuthStore } from '@/store/auth';
+import { useAuthStore } from '@/stores/auth';
 import { Button, Form, Input, theme } from 'antd';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

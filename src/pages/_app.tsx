@@ -8,7 +8,7 @@ import { SideMenuItems } from '@/config/side-menu';
 import { ThemeContext } from '@/context/theme';
 import { Navigate } from '@/router';
 import iHttp from '@/service/http';
-import { useAuthStore } from '@/store/auth';
+import { useAuthStore } from '@/stores/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { Avatar, Button, Dropdown, Layout, Space, Watermark, theme } from 'antd';
