@@ -1,13 +1,14 @@
 import { blue } from '@ant-design/colors';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { Routes } from '@generouted/react-router';
-import { ConfigProvider, ThemeConfig } from 'antd';
+import { App as AntdApp, ConfigProvider, ThemeConfig } from 'antd';
 import 'antd/dist/reset.css';
 import zhCN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import AntdStatic from './components/antd-static';
 import ThemeProvider, { ThemeContext } from './context/theme';
 import './index.css';
 dayjs.locale('zh-cn');
@@ -42,7 +43,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             }}
           >
             <StyleProvider hashPriority="high">
-              <Routes />
+              <AntdApp>
+                <Routes />
+                <AntdStatic />
+              </AntdApp>
             </StyleProvider>
           </ConfigProvider>
         )}

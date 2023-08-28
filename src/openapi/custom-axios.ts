@@ -1,3 +1,4 @@
+import { message } from '@/components/antd-static';
 import { useAuthStore } from '@/stores/auth';
 import { getAuthHeader } from '@/utils/auth';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
@@ -76,6 +77,7 @@ const axReqConfig: AxiosRequestConfig = {
         // What is “401 Error Unauthorized Access” and How to Fix it?
         // https://www.siteground.com/kb/error-401/
         // 异常统一报错
+        message.error('账号未鉴权');
       } else {
         // 异常统一报错
       }

@@ -148,7 +148,7 @@ const App = () => {
           </Watermark>
         </Content>
         <Footer className="p-1 text-center text-xs text-gray-400">Made with ❤️ by
-         <Link to='https://github.com/binghuis/template-react-desktop'> @binghuis</Link>
+         <Link target="_blank" to='https://github.com/binghuis/template-react-desktop'> @binghuis</Link>
         </Footer>
       </Layout>
     </Layout>
