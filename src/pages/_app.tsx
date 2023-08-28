@@ -11,9 +11,9 @@ import iHttp from '@/service/http';
 import { useAuthStore } from '@/stores/auth';
 import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Avatar, Button, Dropdown, Layout, Space, Watermark, theme } from 'antd';
+import { Avatar, Badge, Button, Dropdown, Layout, Space, Tag, Watermark, theme } from 'antd';
 import { useContext, useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useBoolean } from 'usehooks-ts';
 
 const App = () => {
@@ -97,7 +97,7 @@ const App = () => {
         </div>
       </Sider>
 
-      <Layout className="flex h-full flex-col overflow-y-auto">
+      <Layout className="flex h-screen flex-col ">
         <Header
           className="relative flex h-12 items-center justify-end pl-2 pr-4"
           style={{
@@ -141,13 +141,15 @@ const App = () => {
             </Space>
           </Dropdown>
         </Header>
-        <Content className="flex-grow px-2 py-1" style={{ color: token.colorText }}>
+        <Content className="flex-grow px-2 py-1 overflow-y-auto" style={{ color: token.colorText }}>
           <BreadcrumbPlus routes={BreadcrumbRoutes} />
           <Watermark className="h-full" content={`${user?.id}`}>
             <Outlet />
           </Watermark>
         </Content>
-        <Footer className="p-1 text-center text-xs text-gray-400">Made with ❤️ by @binghuis</Footer>
+        <Footer className="p-1 text-center text-xs text-gray-400">Made with ❤️ by
+         <Link to='https://github.com/binghuis/template-react-desktop'> @binghuis</Link>
+        </Footer>
       </Layout>
     </Layout>
   );
