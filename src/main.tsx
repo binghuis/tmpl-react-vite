@@ -1,7 +1,7 @@
 import { blue } from '@ant-design/colors';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { Routes } from '@generouted/react-router';
-import { App as AntdApp, ConfigProvider, ThemeConfig } from 'antd';
+import { App, ConfigProvider, ThemeConfig } from 'antd';
 import 'antd/dist/reset.css';
 import zhCN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
@@ -43,10 +43,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             }}
           >
             <StyleProvider hashPriority="high">
-              <AntdApp>
+              <App>
                 <Routes />
                 <AntdStatic />
-              </AntdApp>
+              </App>
             </StyleProvider>
           </ConfigProvider>
         )}
