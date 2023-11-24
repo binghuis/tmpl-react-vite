@@ -14,6 +14,7 @@ export default defineConfig({
       mode: 'split',
       mock: true,
       clean: true,
+      // prettier: true,
       override: {
         title: () => 'OpenApi',
         mutator: {

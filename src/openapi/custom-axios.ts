@@ -1,6 +1,6 @@
 import { message } from '@/components/antd-static';
 import { useAuthStore } from '@/stores/auth';
-import { getAuthHeader } from '@/utils/auth';
+import { getAuthHeader } from '@/utils/headers';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
 import { consola } from 'consola';
 import { StatusCodes } from 'http-status-codes';

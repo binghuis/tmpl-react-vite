@@ -17,16 +17,16 @@
  * ources/openapi.yaml)
  */
 import type {
-  Pet,
+  ApiResponse,
   FindPetsByStatusParams,
   FindPetsByTagsParams,
-  UpdatePetWithFormParams,
-  ApiResponse,
-  UploadFileParams,
   GetInventory200,
+  LoginUserParams,
   Order,
-  User,
-  LoginUserParams
+  Pet,
+  UpdatePetWithFormParams,
+  UploadFileParams,
+  User
 } from './swagger.schemas'
 import { ax } from '../custom-axios';
 
@@ -299,11 +299,6 @@ const deleteUser = (
     }
   
 return {updatePet,addPet,findPetsByStatus,findPetsByTags,getPetById,updatePetWithForm,deletePet,uploadFile,getInventory,placeOrder,getOrderById,deleteOrder,createUser,createUsersWithListInput,loginUser,logoutUser,getUserByName,updateUser,deleteUser}};
-
-type AwaitedInput<T> = PromiseLike<T> | T;
-
-    type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
-
 export type UpdatePetResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getOpenApi>['updatePet']>>>
 export type AddPetResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getOpenApi>['addPet']>>>
 export type FindPetsByStatusResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getOpenApi>['findPetsByStatus']>>>

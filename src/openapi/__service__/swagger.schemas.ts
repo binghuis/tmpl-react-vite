@@ -78,8 +78,8 @@ export type PetPayload = Pet;
 
 export interface ApiResponse {
   code?: number;
-  type?: string;
   message?: string;
+  type?: string;
 }
 
 /**
@@ -101,23 +101,23 @@ export interface Tag {
 }
 
 export interface Pet {
+  category?: Category;
   id?: number;
   name: string;
-  category?: Category;
   photoUrls: string[];
-  tags?: Tag[];
   /** pet status in the store */
   status?: PetStatus;
+  tags?: Tag[];
 }
 
 export interface User {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
   email?: string;
+  firstName?: string;
+  id?: number;
+  lastName?: string;
   password?: string;
   phone?: string;
+  username?: string;
   /** User Status */
   userStatus?: number;
 }
@@ -133,16 +133,16 @@ export interface Category {
 }
 
 export interface Address {
-  street?: string;
   city?: string;
   state?: string;
+  street?: string;
   zip?: string;
 }
 
 export interface Customer {
+  address?: Address[];
   id?: number;
   username?: string;
-  address?: Address[];
 }
 
 /**
@@ -159,12 +159,12 @@ export const OrderStatus = {
 } as const;
 
 export interface Order {
+  complete?: boolean;
   id?: number;
   petId?: number;
   quantity?: number;
   shipDate?: string;
   /** Order Status */
   status?: OrderStatus;
-  complete?: boolean;
 }
 

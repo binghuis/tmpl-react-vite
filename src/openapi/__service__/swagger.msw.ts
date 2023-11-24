@@ -17,144 +17,229 @@
  * ources/openapi.yaml)
  */
 import {
-  rest
-} from 'msw'
-import {
   faker
 } from '@faker-js/faker'
+import {
+  HttpResponse,
+  delay,
+  http
+} from 'msw'
 
-export const getUpdatePetMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.random.word(), category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])}, undefined]), photoUrls: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.random.word())), tags: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])})), undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined])})
+export const getUpdatePetMock = () => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])})), undefined])})
 
-export const getAddPetMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.random.word(), category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])}, undefined]), photoUrls: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.random.word())), tags: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])})), undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined])})
+export const getAddPetMock = () => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])})), undefined])})
 
-export const getFindPetsByStatusMock = () => (Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.random.word(), category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])}, undefined]), photoUrls: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.random.word())), tags: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])})), undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined])})))
+export const getFindPetsByStatusMock = () => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])})), undefined])})))
 
-export const getFindPetsByTagsMock = () => (Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.random.word(), category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])}, undefined]), photoUrls: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.random.word())), tags: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])})), undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined])})))
+export const getFindPetsByTagsMock = () => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])})), undefined])})))
 
-export const getGetPetByIdMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.random.word(), category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])}, undefined]), photoUrls: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.random.word())), tags: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined])})), undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined])})
+export const getGetPetByIdMock = () => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold']), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined])})), undefined])})
 
-export const getUploadFileMock = () => ({code: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), type: faker.helpers.arrayElement([faker.random.word(), undefined]), message: faker.helpers.arrayElement([faker.random.word(), undefined])})
+export const getUploadFileMock = () => ({code: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), message: faker.helpers.arrayElement([faker.word.sample(), undefined]), type: faker.helpers.arrayElement([faker.word.sample(), undefined])})
 
 export const getGetInventoryMock = () => ({
-        'clkuoke3f0000y2fyh516axy5': faker.datatype.number({min: undefined, max: undefined})
+        '[faker.string.alphanumeric(5)]': faker.number.int({min: undefined, max: undefined})
       })
 
-export const getPlaceOrderMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered']), undefined]), complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined])})
+export const getPlaceOrderMock = () => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered']), undefined])})
 
-export const getGetOrderByIdMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered']), undefined]), complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined])})
+export const getGetOrderByIdMock = () => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered']), undefined])})
 
-export const getCreateUsersWithListInputMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), username: faker.helpers.arrayElement([faker.random.word(), undefined]), firstName: faker.helpers.arrayElement([faker.random.word(), undefined]), lastName: faker.helpers.arrayElement([faker.random.word(), undefined]), email: faker.helpers.arrayElement([faker.random.word(), undefined]), password: faker.helpers.arrayElement([faker.random.word(), undefined]), phone: faker.helpers.arrayElement([faker.random.word(), undefined]), userStatus: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getCreateUsersWithListInputMock = () => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined])})
 
-export const getLoginUserMock = () => (faker.random.word())
+export const getLoginUserMock = () => (faker.word.sample())
 
-export const getGetUserByNameMock = () => ({id: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), username: faker.helpers.arrayElement([faker.random.word(), undefined]), firstName: faker.helpers.arrayElement([faker.random.word(), undefined]), lastName: faker.helpers.arrayElement([faker.random.word(), undefined]), email: faker.helpers.arrayElement([faker.random.word(), undefined]), password: faker.helpers.arrayElement([faker.random.word(), undefined]), phone: faker.helpers.arrayElement([faker.random.word(), undefined]), userStatus: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getGetUserByNameMock = () => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined])})
 
 export const getOpenApiMSW = () => [
-rest.put('*/pet', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getUpdatePetMock()),
+http.put('*/pet', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getUpdatePetMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/pet', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getAddPetMock()),
+      }),http.post('*/pet', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getAddPetMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/pet/findByStatus', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getFindPetsByStatusMock()),
+      }),http.get('*/pet/findByStatus', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getFindPetsByStatusMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/pet/findByTags', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getFindPetsByTagsMock()),
+      }),http.get('*/pet/findByTags', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getFindPetsByTagsMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/pet/:petId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetPetByIdMock()),
+      }),http.get('*/pet/:petId', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getGetPetByIdMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/pet/:petId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.post('*/pet/:petId', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.delete('*/pet/:petId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.delete('*/pet/:petId', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/pet/:petId/uploadImage', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getUploadFileMock()),
+      }),http.post('*/pet/:petId/uploadImage', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getUploadFileMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/store/inventory', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetInventoryMock()),
+      }),http.get('*/store/inventory', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getGetInventoryMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/store/order', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getPlaceOrderMock()),
+      }),http.post('*/store/order', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getPlaceOrderMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/store/order/:orderId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetOrderByIdMock()),
+      }),http.get('*/store/order/:orderId', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getGetOrderByIdMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.delete('*/store/order/:orderId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.delete('*/store/order/:orderId', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/user', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.post('*/user', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.post('*/user/createWithList', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getCreateUsersWithListInputMock()),
+      }),http.post('*/user/createWithList', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getCreateUsersWithListInputMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/user/login', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getLoginUserMock()),
+      }),http.get('*/user/login', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getLoginUserMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/user/logout', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.get('*/user/logout', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.get('*/user/:username', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetUserByNameMock()),
+      }),http.get('*/user/:username', async () => {
+        await delay(1000);
+        return new HttpResponse(JSON.stringify(getGetUserByNameMock()),
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.put('*/user/:username', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.put('*/user/:username', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
-      }),rest.delete('*/user/:username', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
+      }),http.delete('*/user/:username', async () => {
+        await delay(1000);
+        return new HttpResponse(null,
+          { 
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         )
       }),]
