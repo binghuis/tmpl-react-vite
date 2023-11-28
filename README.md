@@ -1,18 +1,22 @@
-# template-react-desktop
+# tmpl-react-vite
 
-一个 `React Desktop Site` 项目模板，针对现代 / 传统浏览器分别打包，`brotli` 算法压缩
+![antd](https://img.shields.io/badge/AntD_5-0170FE?logo=antdesign)
+![vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&labelColor=263238)
+![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&labelColor=263238)
+
+一个 `React Admin` 项目模板，针对现代、传统浏览器分别打包，`brotli` 压缩
 
 ## 下载
 
 无需安装，本地直接执行 [create-hotpot](https://github.com/binghuis/create-hotpot) `CLI` 命令
 
 ```
-pnpm create hotpot -t react-desktop
+pnpm create hotpot -t react-vite
 ```
 
 ## 预览
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/template-react-desktop)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/binghuis/tmpl-react-vite)
 
 ## 部分目录解释
 
@@ -140,7 +144,7 @@ css`
 
 为什么没有选 `Rust` 生态的 `formatter` 和 `linter` ？
 
-- [Rome@12.1.0](https://github.com/rome/tools) 仅支持 `TS`，`JS` 和 `JSON`，而且不支持 `CSS-in-JS`，目前仅适合在小型项目中使用，优点是配置简单，仅需一个配置文件即可实现 `formatter`，`linter`
+- ~~[Rome@12.1.0](https://github.com/rome/tools) 仅支持 `TS`，`JS` 和 `JSON`，而且不支持 `CSS-in-JS`，目前仅适合在小型项目中使用，优点是配置简单，仅需一个配置文件即可实现 `formatter`，`linter`~~
 
 - [dprint@0.36.1](https://github.com/dprint/dprint) 是 `Rust` 实现的 `formatter` 工具，它不同于 `Perttier` 和 `Rome` 那么顽固，配置自由度更高，但目前依然处于 `early development`，且需要配合 `linter` 工具使用，目前仍不成熟，但非常值得关注
 
