@@ -1,6 +1,6 @@
 /**
- * 此类型文件由swagger解析自动生成，请勿修改
- * <==================================>
+ * 此类型文件由 Swagger 解析自动生成，请勿修改
+ * --------------------------------------
  * Swagger Petstore - OpenAPI 3.0
  * OpenAPI spec version: 1.0.11
  * This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about

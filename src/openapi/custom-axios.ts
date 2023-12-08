@@ -4,68 +4,9 @@ import { getAuthHeader } from '@/utils/headers';
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
 import { consola } from 'consola';
 import { StatusCodes } from 'http-status-codes';
-import { green, yellow } from 'kleur/colors';
 import { BaseResponse } from './types';
-interface IPendingVal {
-  controller: AbortController;
-  time: number; // ms
-}
 
-type IPending = Record<string, IPendingVal>;
-
-class DuplicateRequestsController {
-  private pending: IPending;
-  private expire: number;
-  constructor() {
-    this.pending = {};
-    /** 接口最大存储时间（毫秒） */
-    this.expire = 2000;
-  }
-  hasPending = (key: string) => this.pending[key];
-  addPending = (key: string, controller: AbortController) => {
-    /** 过滤过期接口 */
-    this.pending = Object.entries(this.pending).reduce((acc: IPending, [key, val]) => {
-      const duration = Date.now() - val.time;
-      if (duration < this.expire) {
-        acc[key] = val;
-      }
-      return acc;
-    }, {});
-    if (this.hasPending(key)) {
-      console.info(yellow(`连续请求，本次忽略 ${key}`));
-      controller.abort();
-    } else {
-      this.pending[key] = {
-        controller: controller,
-        time: Date.now(),
-      };
-    }
-  };
-
-  /** 删除当前请求记录 */
-  removePending = (key: string) => {
-    Reflect.deleteProperty(this.pending, key);
-  };
-
-  /** 短时间内重复请求只保留最后一次，其余中断 */
-  /** 生成一个由url，method和data组成的字符串请求key */
-  genRequestKey = (config: AxiosRequestConfig, flag?: 'request' | 'response') => {
-    if (!config) {
-      return `${+new Date()}`.valueOf();
-    }
-    const uri = axios.getUri(config);
-    const key = `${config.method?.toUpperCase()} ${uri}`;
-    if (!import.meta.env.PROD) {
-      console.info(green(`${flag}: ${key}`));
-    }
-    return key;
-  };
-}
-
-const duplicateRequestsController = new DuplicateRequestsController();
-
-const axReqConfig: AxiosRequestConfig = {
-  // 自定义 url vite 环境变量
+const xConfig: AxiosRequestConfig = {
   baseURL: import.meta.env.VITE_AXIOS_BASE_URL,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
@@ -91,26 +32,20 @@ const axReqConfig: AxiosRequestConfig = {
   },
 };
 
-export const AXIOS_INSTANCE = axios.create(axReqConfig);
+export const xInstance = axios.create(xConfig);
 
-AXIOS_INSTANCE.interceptors.request.use((c) => {
-  if (c.headers) {
-    // headers 加 token
-    c.headers = {
-      ...c.headers,
+xInstance.interceptors.request.use((cfg) => {
+  if (cfg.headers) {
+    cfg.headers = {
+      ...cfg.headers,
       ...getAuthHeader(useAuthStore.getState().token),
     } as AxiosRequestHeaders;
   }
-  const controller = new AbortController();
-  const key = duplicateRequestsController.genRequestKey(c, 'request');
-  duplicateRequestsController.addPending(key, controller);
-  return { ...c, signal: controller.signal };
+  return cfg;
 }, consola.warn);
 
-AXIOS_INSTANCE.interceptors.response.use(
+xInstance.interceptors.response.use(
   (res: AxiosResponse<BaseResponse>) => {
-    const key = duplicateRequestsController.genRequestKey({ ...res.config }, 'response');
-    duplicateRequestsController.removePending(key);
     const resData = res.data;
 
     if (resData.code !== 'SUCCESS') {
@@ -126,21 +61,23 @@ AXIOS_INSTANCE.interceptors.response.use(
   },
 );
 
-export const ax = <T>(config: AxiosRequestConfig): Promise<T> => {
-  return AXIOS_INSTANCE({
+export const x = <T>(config: AxiosRequestConfig): Promise<T> => {
+  const res = xInstance({
     ...config,
   })
     .then(({ data }) => data)
     .catch(consola.warn);
+
+  return res;
 };
 
 const request = (method: Method) => {
-  return async <T, D>(url: string, data?: D, config?: AxiosRequestConfig): Promise<T> => {
+  return async <T, D>(url: string, data?: D, cfg?: AxiosRequestConfig): Promise<T> => {
     const requestHandle: AxiosRequestConfig = {
-      ...axReqConfig,
+      ...xConfig,
       url,
       method,
-      ...config,
+      ...cfg,
     };
     if (method.toUpperCase() === 'GET') {
       requestHandle.params = data;
@@ -148,11 +85,11 @@ const request = (method: Method) => {
     if (method.toUpperCase() === 'POST') {
       requestHandle.data = { data };
     }
-    return AXIOS_INSTANCE.request(requestHandle);
+    return xInstance.request(requestHandle);
   };
 };
 
-export const axget = request('GET');
-export const axpost = request('POST');
+export const xget = request('GET');
+export const xpost = request('POST');
 
-export default ax;
+export default x;

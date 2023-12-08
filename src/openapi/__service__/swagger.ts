@@ -1,6 +1,6 @@
 /**
- * 此类型文件由swagger解析自动生成，请勿修改
- * <==================================>
+ * 此类型文件由 Swagger 解析自动生成，请勿修改
+ * --------------------------------------
  * Swagger Petstore - OpenAPI 3.0
  * OpenAPI spec version: 1.0.11
  * This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
@@ -28,7 +28,7 @@ import type {
   UploadFileParams,
   User
 } from './swagger.schemas'
-import { ax } from '../custom-axios';
+import { x } from '../custom-axios';
 
 
 
@@ -40,7 +40,7 @@ import { ax } from '../custom-axios';
 const updatePet = (
     pet: Pet,
  ) => {
-      return ax<Pet>(
+      return x<Pet>(
       {url: `/pet`, method: 'put',
       headers: {'Content-Type': 'application/json', },
       data: pet
@@ -55,7 +55,7 @@ const updatePet = (
 const addPet = (
     pet: Pet,
  ) => {
-      return ax<Pet>(
+      return x<Pet>(
       {url: `/pet`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: pet
@@ -70,7 +70,7 @@ const addPet = (
 const findPetsByStatus = (
     params?: FindPetsByStatusParams,
  ) => {
-      return ax<Pet[]>(
+      return x<Pet[]>(
       {url: `/pet/findByStatus`, method: 'get',
         params
     },
@@ -84,7 +84,7 @@ const findPetsByStatus = (
 const findPetsByTags = (
     params?: FindPetsByTagsParams,
  ) => {
-      return ax<Pet[]>(
+      return x<Pet[]>(
       {url: `/pet/findByTags`, method: 'get',
         params
     },
@@ -98,7 +98,7 @@ const findPetsByTags = (
 const getPetById = (
     petId: number,
  ) => {
-      return ax<Pet>(
+      return x<Pet>(
       {url: `/pet/${petId}`, method: 'get'
     },
       );
@@ -111,7 +111,7 @@ const updatePetWithForm = (
     petId: number,
     params?: UpdatePetWithFormParams,
  ) => {
-      return ax<unknown>(
+      return x<unknown>(
       {url: `/pet/${petId}`, method: 'post',
         params
     },
@@ -125,7 +125,7 @@ const updatePetWithForm = (
 const deletePet = (
     petId: number,
  ) => {
-      return ax<unknown>(
+      return x<unknown>(
       {url: `/pet/${petId}`, method: 'delete'
     },
       );
@@ -139,7 +139,7 @@ const uploadFile = (
     uploadFilePayload: Blob,
     params?: UploadFileParams,
  ) => {
-      return ax<ApiResponse>(
+      return x<ApiResponse>(
       {url: `/pet/${petId}/uploadImage`, method: 'post',
       headers: {'Content-Type': 'application/octet-stream', },
       data: uploadFilePayload,
@@ -155,7 +155,7 @@ const uploadFile = (
 const getInventory = (
     
  ) => {
-      return ax<GetInventory200>(
+      return x<GetInventory200>(
       {url: `/store/inventory`, method: 'get'
     },
       );
@@ -168,7 +168,7 @@ const getInventory = (
 const placeOrder = (
     order: Order,
  ) => {
-      return ax<Order>(
+      return x<Order>(
       {url: `/store/order`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: order
@@ -183,7 +183,7 @@ const placeOrder = (
 const getOrderById = (
     orderId: number,
  ) => {
-      return ax<Order>(
+      return x<Order>(
       {url: `/store/order/${orderId}`, method: 'get'
     },
       );
@@ -196,7 +196,7 @@ const getOrderById = (
 const deleteOrder = (
     orderId: number,
  ) => {
-      return ax<unknown>(
+      return x<unknown>(
       {url: `/store/order/${orderId}`, method: 'delete'
     },
       );
@@ -209,7 +209,7 @@ const deleteOrder = (
 const createUser = (
     user: User,
  ) => {
-      return ax<User>(
+      return x<User>(
       {url: `/user`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: user
@@ -224,7 +224,7 @@ const createUser = (
 const createUsersWithListInput = (
     user: User[],
  ) => {
-      return ax<User>(
+      return x<User>(
       {url: `/user/createWithList`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: user
@@ -238,7 +238,7 @@ const createUsersWithListInput = (
 const loginUser = (
     params?: LoginUserParams,
  ) => {
-      return ax<string>(
+      return x<string>(
       {url: `/user/login`, method: 'get',
         params
     },
@@ -251,7 +251,7 @@ const loginUser = (
 const logoutUser = (
     
  ) => {
-      return ax<void>(
+      return x<void>(
       {url: `/user/logout`, method: 'get'
     },
       );
@@ -263,7 +263,7 @@ const logoutUser = (
 const getUserByName = (
     username: string,
  ) => {
-      return ax<User>(
+      return x<User>(
       {url: `/user/${username}`, method: 'get'
     },
       );
@@ -277,7 +277,7 @@ const updateUser = (
     username: string,
     user: User,
  ) => {
-      return ax<void>(
+      return x<void>(
       {url: `/user/${username}`, method: 'put',
       headers: {'Content-Type': 'application/json', },
       data: user
@@ -292,7 +292,7 @@ const updateUser = (
 const deleteUser = (
     username: string,
  ) => {
-      return ax<unknown>(
+      return x<unknown>(
       {url: `/user/${username}`, method: 'delete'
     },
       );

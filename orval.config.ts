@@ -1,8 +1,8 @@
 import { defineConfig } from 'orval';
 
-// 使用本地 Swagger
+// 本地
 const INPUT = './src/openapi/spec.yaml';
-// 使用在线 Swagger
+// 线上
 const URL = '';
 
 export default defineConfig({
@@ -14,17 +14,17 @@ export default defineConfig({
       mode: 'split',
       mock: true,
       clean: true,
-      // prettier: true,
+      prettier: true,
       override: {
         title: () => 'OpenApi',
         mutator: {
           path: './custom-axios.ts',
-          name: 'ax',
+          name: 'x',
         },
         header: (info) =>
           [
-            '此类型文件由swagger解析自动生成，请勿修改',
-            '<==================================>',
+            '此类型文件由 Swagger 解析自动生成，请勿修改',
+            '--------------------------------------',
             info.title,
             ...(info.version ? [`OpenAPI spec version: ${info.version}`] : []),
             ...(info.description?.match(/.{1,120}/g) ?? []),
@@ -48,8 +48,8 @@ export default defineConfig({
     input: {
       target: URL ? URL : INPUT,
     },
-    hooks: {
-      afterAllFilesWrite: 'prettier --write',
-    },
+    // hooks: {
+    //   afterAllFilesWrite: 'prettier --write',
+    // },
   },
 });
