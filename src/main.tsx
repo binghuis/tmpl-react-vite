@@ -30,7 +30,7 @@ type ThemeData = {
   colorPrimary: string;
 };
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>
       <ThemeContext.Consumer>
