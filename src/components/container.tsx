@@ -1,12 +1,11 @@
 import { Divider, theme } from 'antd';
-import { PropsWithChildren } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 
-export type ContainerProps = { title?: string };
+export type ContainerProps = { title?: string } & HTMLAttributes<HTMLDivElement>;
 
-const Container = (props: PropsWithChildren<ContainerProps>) => {
+const Container = ({ children, title, ...props }: PropsWithChildren<ContainerProps>) => {
   const { useToken } = theme;
 
-  const { children, title } = props;
   const { token } = useToken();
   return (
     <div
@@ -14,6 +13,7 @@ const Container = (props: PropsWithChildren<ContainerProps>) => {
       style={{
         background: token.colorBgContainer,
       }}
+      {...props}
     >
       <div className="text-base">{title}</div>
       <Divider />
