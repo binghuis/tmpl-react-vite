@@ -1,10 +1,10 @@
 import Logo from '@/assets/logo.png';
 import Icon from '@/components/icon-font';
 import { ThemeToggler } from '@/components/theme-toggler';
-import { ThemeContext } from '@/context/theme';
+import { useThemeContext } from '@/context/theme';
 import { useAuthStore } from '@/stores/auth';
 import { Button, Form, Input, theme } from 'antd';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export interface LoginForm {
   account: string;
@@ -33,7 +33,7 @@ const PageLogin: React.FC = () => {
     });
     setFormValid(!invalid);
   };
-  const { toggleTheme, isDark } = useContext(ThemeContext);
+  const { toggleTheme, isDark } = useThemeContext();
   const { useToken } = theme;
 
   const { token } = useToken();

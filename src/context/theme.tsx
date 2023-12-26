@@ -1,5 +1,5 @@
 import { theme } from 'antd';
-import { PropsWithChildren, createContext } from 'react';
+import { PropsWithChildren, createContext, useContext } from 'react';
 import { useBoolean, useMediaQuery } from 'usehooks-ts';
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -26,5 +26,7 @@ function ThemeProvider({ children }: PropsWithChildren) {
     </ThemeContext.Provider>
   );
 }
+
+export const useThemeContext = () => useContext(ThemeContext);
 
 export default ThemeProvider;
