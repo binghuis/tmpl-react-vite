@@ -1,4 +1,4 @@
-import { xget } from '@/openapi/custom-axios';
+import { xget } from '@/openapi/client';
 
 class Http {
   private cache = new Map<string, Promise<unknown>>();

@@ -28,7 +28,7 @@ import type {
   UploadFileParams,
   User
 } from './swagger.schemas'
-import { x } from '../custom-axios';
+import { x } from '../client';
 
 
 
@@ -41,7 +41,7 @@ const updatePet = (
     pet: Pet,
  ) => {
       return x<Pet>(
-      {url: `/pet`, method: 'put',
+      {url: `/pet`, method: 'PUT',
       headers: {'Content-Type': 'application/json', },
       data: pet
     },
@@ -56,7 +56,7 @@ const addPet = (
     pet: Pet,
  ) => {
       return x<Pet>(
-      {url: `/pet`, method: 'post',
+      {url: `/pet`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: pet
     },
@@ -71,7 +71,7 @@ const findPetsByStatus = (
     params?: FindPetsByStatusParams,
  ) => {
       return x<Pet[]>(
-      {url: `/pet/findByStatus`, method: 'get',
+      {url: `/pet/findByStatus`, method: 'GET',
         params
     },
       );
@@ -85,7 +85,7 @@ const findPetsByTags = (
     params?: FindPetsByTagsParams,
  ) => {
       return x<Pet[]>(
-      {url: `/pet/findByTags`, method: 'get',
+      {url: `/pet/findByTags`, method: 'GET',
         params
     },
       );
@@ -99,7 +99,7 @@ const getPetById = (
     petId: number,
  ) => {
       return x<Pet>(
-      {url: `/pet/${petId}`, method: 'get'
+      {url: `/pet/${petId}`, method: 'GET'
     },
       );
     }
@@ -112,7 +112,7 @@ const updatePetWithForm = (
     params?: UpdatePetWithFormParams,
  ) => {
       return x<unknown>(
-      {url: `/pet/${petId}`, method: 'post',
+      {url: `/pet/${petId}`, method: 'POST',
         params
     },
       );
@@ -126,7 +126,7 @@ const deletePet = (
     petId: number,
  ) => {
       return x<unknown>(
-      {url: `/pet/${petId}`, method: 'delete'
+      {url: `/pet/${petId}`, method: 'DELETE'
     },
       );
     }
@@ -140,7 +140,7 @@ const uploadFile = (
     params?: UploadFileParams,
  ) => {
       return x<ApiResponse>(
-      {url: `/pet/${petId}/uploadImage`, method: 'post',
+      {url: `/pet/${petId}/uploadImage`, method: 'POST',
       headers: {'Content-Type': 'application/octet-stream', },
       data: uploadFilePayload,
         params
@@ -156,7 +156,7 @@ const getInventory = (
     
  ) => {
       return x<GetInventory200>(
-      {url: `/store/inventory`, method: 'get'
+      {url: `/store/inventory`, method: 'GET'
     },
       );
     }
@@ -169,7 +169,7 @@ const placeOrder = (
     order: Order,
  ) => {
       return x<Order>(
-      {url: `/store/order`, method: 'post',
+      {url: `/store/order`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: order
     },
@@ -184,7 +184,7 @@ const getOrderById = (
     orderId: number,
  ) => {
       return x<Order>(
-      {url: `/store/order/${orderId}`, method: 'get'
+      {url: `/store/order/${orderId}`, method: 'GET'
     },
       );
     }
@@ -197,7 +197,7 @@ const deleteOrder = (
     orderId: number,
  ) => {
       return x<unknown>(
-      {url: `/store/order/${orderId}`, method: 'delete'
+      {url: `/store/order/${orderId}`, method: 'DELETE'
     },
       );
     }
@@ -210,7 +210,7 @@ const createUser = (
     user: User,
  ) => {
       return x<User>(
-      {url: `/user`, method: 'post',
+      {url: `/user`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: user
     },
@@ -225,7 +225,7 @@ const createUsersWithListInput = (
     user: User[],
  ) => {
       return x<User>(
-      {url: `/user/createWithList`, method: 'post',
+      {url: `/user/createWithList`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: user
     },
@@ -239,7 +239,7 @@ const loginUser = (
     params?: LoginUserParams,
  ) => {
       return x<string>(
-      {url: `/user/login`, method: 'get',
+      {url: `/user/login`, method: 'GET',
         params
     },
       );
@@ -252,7 +252,7 @@ const logoutUser = (
     
  ) => {
       return x<void>(
-      {url: `/user/logout`, method: 'get'
+      {url: `/user/logout`, method: 'GET'
     },
       );
     }
@@ -264,7 +264,7 @@ const getUserByName = (
     username: string,
  ) => {
       return x<User>(
-      {url: `/user/${username}`, method: 'get'
+      {url: `/user/${username}`, method: 'GET'
     },
       );
     }
@@ -278,7 +278,7 @@ const updateUser = (
     user: User,
  ) => {
       return x<void>(
-      {url: `/user/${username}`, method: 'put',
+      {url: `/user/${username}`, method: 'PUT',
       headers: {'Content-Type': 'application/json', },
       data: user
     },
@@ -293,7 +293,7 @@ const deleteUser = (
     username: string,
  ) => {
       return x<unknown>(
-      {url: `/user/${username}`, method: 'delete'
+      {url: `/user/${username}`, method: 'DELETE'
     },
       );
     }

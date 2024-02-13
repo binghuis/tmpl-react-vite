@@ -18,7 +18,7 @@ export default defineConfig({
       override: {
         title: () => 'OpenApi',
         mutator: {
-          path: './custom-axios.ts',
+          path: './client.ts',
           name: 'x',
         },
         header: (info) =>
