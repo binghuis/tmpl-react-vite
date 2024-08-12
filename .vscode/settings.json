@@ -6,13 +6,6 @@
     "source.fixAll.stylelint": "explicit"
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "stylelint.validate": ["css", "less"],
-  "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
   // updated 2023-07-08 21:00
   // https://github.com/antfu/vscode-file-nesting-config
   "explorer.fileNesting.enabled": true,
