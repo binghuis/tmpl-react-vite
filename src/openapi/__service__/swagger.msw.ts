@@ -32,37 +32,37 @@ import type {
   User
 } from './swagger.schemas'
 
-export const getUpdatePetMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
+export const getUpdatePetResponseMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
 
-export const getAddPetMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
+export const getAddPetResponseMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
 
-export const getFindPetsByStatusMock = (overrideResponse: any = {}): Pet[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})))
+export const getFindPetsByStatusResponseMock = (overrideResponse: any = {}): Pet[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})))
 
-export const getFindPetsByTagsMock = (overrideResponse: any = {}): Pet[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})))
+export const getFindPetsByTagsResponseMock = (overrideResponse: any = {}): Pet[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})))
 
-export const getGetPetByIdMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
+export const getGetPetByIdResponseMock = (overrideResponse: any = {}): Pet => ({category: faker.helpers.arrayElement([{id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse}, undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.word.sample(), photoUrls: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => (faker.word.sample())), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['available','pending','sold'] as const), undefined]), tags: faker.helpers.arrayElement([Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})), undefined]), ...overrideResponse})
 
-export const getUploadFileMock = (overrideResponse: any = {}): ApiResponse => ({code: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), message: faker.helpers.arrayElement([faker.word.sample(), undefined]), type: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})
+export const getUploadFileResponseMock = (overrideResponse: any = {}): ApiResponse => ({code: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), message: faker.helpers.arrayElement([faker.word.sample(), undefined]), type: faker.helpers.arrayElement([faker.word.sample(), undefined]), ...overrideResponse})
 
-export const getGetInventoryMock = (): GetInventory200 => ({
+export const getGetInventoryResponseMock = (): GetInventory200 => ({
         [faker.string.alphanumeric(5)]: faker.number.int({min: undefined, max: undefined})
       })
 
-export const getPlaceOrderMock = (overrideResponse: any = {}): Order => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered'] as const), undefined]), ...overrideResponse})
+export const getPlaceOrderResponseMock = (overrideResponse: any = {}): Order => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered'] as const), undefined]), ...overrideResponse})
 
-export const getGetOrderByIdMock = (overrideResponse: any = {}): Order => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered'] as const), undefined]), ...overrideResponse})
+export const getGetOrderByIdResponseMock = (overrideResponse: any = {}): Order => ({complete: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), petId: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), quantity: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), shipDate: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), status: faker.helpers.arrayElement([faker.helpers.arrayElement(['placed','approved','delivered'] as const), undefined]), ...overrideResponse})
 
-export const getCreateUsersWithListInputMock = (overrideResponse: any = {}): User => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), ...overrideResponse})
+export const getCreateUsersWithListInputResponseMock = (overrideResponse: any = {}): User => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), ...overrideResponse})
 
-export const getLoginUserMock = (): string => (faker.word.sample())
+export const getLoginUserResponseMock = (): string => (faker.word.sample())
 
-export const getGetUserByNameMock = (overrideResponse: any = {}): User => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), ...overrideResponse})
+export const getGetUserByNameResponseMock = (overrideResponse: any = {}): User => ({email: faker.helpers.arrayElement([faker.word.sample(), undefined]), firstName: faker.helpers.arrayElement([faker.word.sample(), undefined]), id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), lastName: faker.helpers.arrayElement([faker.word.sample(), undefined]), password: faker.helpers.arrayElement([faker.word.sample(), undefined]), phone: faker.helpers.arrayElement([faker.word.sample(), undefined]), username: faker.helpers.arrayElement([faker.word.sample(), undefined]), userStatus: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), ...overrideResponse})
 
 
 export const getUpdatePetMockHandler = (overrideResponse?: Pet) => {
   return http.put('*/pet', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getUpdatePetMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getUpdatePetResponseMock()),
       {
         status: 200,
         headers: {
@@ -76,7 +76,7 @@ export const getUpdatePetMockHandler = (overrideResponse?: Pet) => {
 export const getAddPetMockHandler = (overrideResponse?: Pet) => {
   return http.post('*/pet', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getAddPetMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getAddPetResponseMock()),
       {
         status: 200,
         headers: {
@@ -90,7 +90,7 @@ export const getAddPetMockHandler = (overrideResponse?: Pet) => {
 export const getFindPetsByStatusMockHandler = (overrideResponse?: Pet[]) => {
   return http.get('*/pet/findByStatus', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getFindPetsByStatusMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getFindPetsByStatusResponseMock()),
       {
         status: 200,
         headers: {
@@ -104,7 +104,7 @@ export const getFindPetsByStatusMockHandler = (overrideResponse?: Pet[]) => {
 export const getFindPetsByTagsMockHandler = (overrideResponse?: Pet[]) => {
   return http.get('*/pet/findByTags', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getFindPetsByTagsMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getFindPetsByTagsResponseMock()),
       {
         status: 200,
         headers: {
@@ -118,7 +118,7 @@ export const getFindPetsByTagsMockHandler = (overrideResponse?: Pet[]) => {
 export const getGetPetByIdMockHandler = (overrideResponse?: Pet) => {
   return http.get('*/pet/:petId', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetPetByIdMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetPetByIdResponseMock()),
       {
         status: 200,
         headers: {
@@ -160,7 +160,7 @@ export const getDeletePetMockHandler = () => {
 export const getUploadFileMockHandler = (overrideResponse?: ApiResponse) => {
   return http.post('*/pet/:petId/uploadImage', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getUploadFileMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getUploadFileResponseMock()),
       {
         status: 200,
         headers: {
@@ -174,7 +174,7 @@ export const getUploadFileMockHandler = (overrideResponse?: ApiResponse) => {
 export const getGetInventoryMockHandler = (overrideResponse?: GetInventory200) => {
   return http.get('*/store/inventory', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetInventoryMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetInventoryResponseMock()),
       {
         status: 200,
         headers: {
@@ -188,7 +188,7 @@ export const getGetInventoryMockHandler = (overrideResponse?: GetInventory200) =
 export const getPlaceOrderMockHandler = (overrideResponse?: Order) => {
   return http.post('*/store/order', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getPlaceOrderMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getPlaceOrderResponseMock()),
       {
         status: 200,
         headers: {
@@ -202,7 +202,7 @@ export const getPlaceOrderMockHandler = (overrideResponse?: Order) => {
 export const getGetOrderByIdMockHandler = (overrideResponse?: Order) => {
   return http.get('*/store/order/:orderId', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetOrderByIdMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetOrderByIdResponseMock()),
       {
         status: 200,
         headers: {
@@ -244,7 +244,7 @@ export const getCreateUserMockHandler = () => {
 export const getCreateUsersWithListInputMockHandler = (overrideResponse?: User) => {
   return http.post('*/user/createWithList', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getCreateUsersWithListInputMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getCreateUsersWithListInputResponseMock()),
       {
         status: 200,
         headers: {
@@ -258,7 +258,7 @@ export const getCreateUsersWithListInputMockHandler = (overrideResponse?: User) 
 export const getLoginUserMockHandler = (overrideResponse?: string) => {
   return http.get('*/user/login', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getLoginUserMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getLoginUserResponseMock()),
       {
         status: 200,
         headers: {
@@ -286,7 +286,7 @@ export const getLogoutUserMockHandler = () => {
 export const getGetUserByNameMockHandler = (overrideResponse?: User) => {
   return http.get('*/user/:username', async () => {
     await delay(1000);
-    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetUserByNameMock()),
+    return new HttpResponse(JSON.stringify(overrideResponse ? overrideResponse : getGetUserByNameResponseMock()),
       {
         status: 200,
         headers: {
