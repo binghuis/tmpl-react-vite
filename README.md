@@ -140,16 +140,6 @@ css`
 
 替换内部变量 `scriptUrl` 为开发者项目 [IconFont](https://www.iconfont.cn/) 产物地址
 
-### 代码规范相关
-
-为什么没有选 `Rust` 生态的 `formatter` 和 `linter` ？
-
-_`Eslint` 相关配置_
-
-_`Prettier` 相关配置_
-
-_`Stylelint` 相关配置_
-
 ### 代码提交流程
 
 - 开发调试：`pnpm dev`
