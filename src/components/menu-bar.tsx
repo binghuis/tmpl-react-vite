@@ -9,6 +9,10 @@ interface ItemBase {
   label: string;
 }
 
+type MenuItem = ItemType & {
+  type?: 'group';
+};
+
 /** 叶子节点可以关联其他路径 */
 interface LeafItem extends ItemBase {
   path?: Path;
@@ -19,6 +23,7 @@ interface LeafItem extends ItemBase {
 interface InternalItem extends ItemBase {
   key: string;
   children: Item[];
+  type?: 'group';
 }
 
 type Item = InternalItem | LeafItem;
@@ -62,7 +67,6 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
       // itemsTemp 叶子节点之前的节点都为内部节点，更新 openKeys
       if (itemsTemp.length > 1) {
         const openKeys = itemsTemp.slice(0, -1).map((item) => (item as InternalItem).key);
-
         setOpenKeys(openKeys);
       }
     }
@@ -78,13 +82,14 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
   }, [pathname]);
 
   /** 将 Item[] 转换成 MenuItem[] */
-  const convertItem2MenuItem = (items: Item[]): NonNullable<ItemType>[] => {
+  const convertItem2MenuItem = (items: Item[]): NonNullable<MenuItem>[] => {
     return items.map((item) => {
       const { label, icon } = item;
 
       let children = null;
       let key = '';
       let path = '';
+      let type = '';
       /** 判断叶子节点 */
       if ('path' in item && item.path) {
         key = item.path;
@@ -96,8 +101,12 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
         children = item.children;
       }
 
-      const menuItem: NonNullable<ItemType> & {
-        children?: NonNullable<ItemType>[];
+      if ('type' in item) {
+        type = item.type ?? '';
+      }
+
+      const menuItem: NonNullable<MenuItem> & {
+        children?: NonNullable<MenuItem>[];
       } = {
         // 只有叶子节点有路由跳转
         label: path ? <Link to={path}>{label}</Link> : label,
@@ -105,6 +114,10 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
         title: label,
         icon: icon,
       };
+
+      if (type === 'group') {
+        menuItem.type = type;
+      }
 
       if (children) {
         menuItem.children = convertItem2MenuItem(children);
