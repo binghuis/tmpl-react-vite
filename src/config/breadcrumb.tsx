@@ -1,6 +1,5 @@
 import { type BreadcrumbPlusProps } from '@/components/breadcrumbs-plus';
 import { Link, Path } from '@/router';
-import { HomeOutlined } from '@ant-design/icons';
 import { matchPath, useMatches } from 'react-router-dom';
 
 /** 用于判断动态路由 path 是否是当前活动路由，进一步决定面包屑是渲染为文本还是 link */
@@ -15,11 +14,7 @@ const isLast = (path: Path) => {
 export const BreadcrumbRoutes: BreadcrumbPlusProps['routes'] = [
   {
     path: '/',
-    breadcrumb: () => (
-      <Link to="/">
-        <HomeOutlined />
-      </Link>
-    ),
+    breadcrumb: () => <Link to="/">首页</Link>,
   },
   { path: '/dynamic', breadcrumb: '动态路由' },
   {

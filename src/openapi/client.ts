@@ -1,9 +1,14 @@
 import { message } from '@/components/antd-static';
 import { useAuthStore } from '@/stores/auth';
 import { getAuthHeader } from '@/utils/headers';
-import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from 'axios';
+import axios, {
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse,
+  HttpStatusCode,
+  Method,
+} from 'axios';
 import { consola } from 'consola';
-import { StatusCodes } from 'http-status-codes';
 import { BaseResponse } from './types';
 
 const xConfig: AxiosRequestConfig = {
@@ -13,8 +18,8 @@ const xConfig: AxiosRequestConfig = {
   },
   // withCredentials: true,
   validateStatus: (status) => {
-    if (status > StatusCodes.BAD_REQUEST) {
-      if (status === StatusCodes.UNAUTHORIZED) {
+    if (status > HttpStatusCode.BadRequest) {
+      if (status === HttpStatusCode.Unauthorized) {
         // What is “401 Error Unauthorized Access” and How to Fix it?
         // https://www.siteground.com/kb/error-401/
         // 异常统一报错
@@ -23,7 +28,7 @@ const xConfig: AxiosRequestConfig = {
         // 异常统一报错
       }
     }
-    return status >= StatusCodes.OK && status < StatusCodes.MULTIPLE_CHOICES;
+    return status >= HttpStatusCode.Ok && status < HttpStatusCode.MultipleChoices;
   },
   paramsSerializer: {
     serialize: (params) => {

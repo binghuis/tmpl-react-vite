@@ -1,17 +1,14 @@
 import { Path } from '@/router';
 import { Menu, MenuProps } from 'antd';
-import { ItemType } from 'antd/es/menu/hooks/useItems';
+import type { ItemType } from 'antd/es/menu/hooks/useItems';
 import { useEffect, useState } from 'react';
 import { Link, matchPath, useLocation } from 'react-router-dom';
 
 interface ItemBase {
   icon?: React.ReactNode;
   label: string;
+  key?: string;
 }
-
-type MenuItem = ItemType & {
-  type?: 'group';
-};
 
 /** 叶子节点可以关联其他路径 */
 interface LeafItem extends ItemBase {
@@ -21,15 +18,13 @@ interface LeafItem extends ItemBase {
 
 /** 内部节点不跳转，不传 path */
 interface InternalItem extends ItemBase {
-  key: string;
   children: Item[];
   type?: 'group';
 }
 
 type Item = InternalItem | LeafItem;
 
-export interface MenuBarProps
-  extends Omit<MenuProps, 'items' | 'selectedKeys' | 'openKeys' | 'onOpenChange'> {
+export interface MenuBarProps extends Omit<MenuProps, 'items'> {
   items: Item[];
 }
 
@@ -66,7 +61,7 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
       }
       // itemsTemp 叶子节点之前的节点都为内部节点，更新 openKeys
       if (itemsTemp.length > 1) {
-        const openKeys = itemsTemp.slice(0, -1).map((item) => (item as InternalItem).key);
+        const openKeys = itemsTemp.slice(0, -1).map((item) => item.key ?? '');
         setOpenKeys(openKeys);
       }
     }
@@ -82,45 +77,23 @@ const MenuBar: React.FunctionComponent<MenuBarProps> = (props) => {
   }, [pathname]);
 
   /** 将 Item[] 转换成 MenuItem[] */
-  const convertItem2MenuItem = (items: Item[]): NonNullable<MenuItem>[] => {
+  const convertItem2MenuItem = (items: Item[]): NonNullable<ItemType>[] => {
     return items.map((item) => {
-      const { label, icon } = item;
+      const { label, icon, key = '' } = item;
 
-      let children = null;
-      let key = '';
-      let path = '';
-      let type = '';
-      /** 判断叶子节点 */
-      if ('path' in item && item.path) {
-        key = item.path;
-        path = item.path;
-      }
-      /** 判断内部节点 */
-      if ('key' in item) {
-        key = item.key;
-        children = item.children;
-      }
-
-      if ('type' in item) {
-        type = item.type ?? '';
-      }
-
-      const menuItem: NonNullable<MenuItem> & {
-        children?: NonNullable<MenuItem>[];
+      const menuItem: NonNullable<ItemType> & {
+        children?: NonNullable<ItemType>[];
       } = {
         // 只有叶子节点有路由跳转
-        label: path ? <Link to={path}>{label}</Link> : label,
-        key: key,
+        label: 'path' in item && item.path ? <Link to={item.path}>{label}</Link> : label,
+        key: 'path' in item && item.path ? item.path : key,
         title: label,
         icon: icon,
+        type: 'type' in item ? item.type : undefined,
       };
 
-      if (type === 'group') {
-        menuItem.type = type;
-      }
-
-      if (children) {
-        menuItem.children = convertItem2MenuItem(children);
+      if ('children' in item && item.children) {
+        menuItem.children = convertItem2MenuItem(item.children);
       }
 
       return menuItem;
