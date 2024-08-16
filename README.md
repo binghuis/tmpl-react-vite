@@ -144,10 +144,6 @@ css`
 
 为什么没有选 `Rust` 生态的 `formatter` 和 `linter` ？
 
-- ~~[Rome@12.1.0](https://github.com/rome/tools) 仅支持 `TS`，`JS` 和 `JSON`，而且不支持 `CSS-in-JS`，目前仅适合在小型项目中使用，优点是配置简单，仅需一个配置文件即可实现 `formatter`，`linter`~~
-
-- [dprint@0.36.1](https://github.com/dprint/dprint) 是 `Rust` 实现的 `formatter` 工具，它不同于 `Perttier` 和 `Rome` 那么顽固，配置自由度更高，但目前依然处于 `early development`，且需要配合 `linter` 工具使用，目前仍不成熟，但非常值得关注
-
 _`Eslint` 相关配置_
 
 _`Prettier` 相关配置_
