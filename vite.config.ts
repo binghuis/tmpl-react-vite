@@ -7,6 +7,7 @@ import viteCompression from 'vite-plugin-compression';
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
+    base: command === 'build' ? './' : '/',
     esbuild: {
       drop: ['debugger'],
     },
