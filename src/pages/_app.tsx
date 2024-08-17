@@ -141,16 +141,18 @@ const App = () => {
             </Space>
           </Dropdown>
         </Header>
-        <Content className="flex-grow overflow-y-auto px-2 py-1" style={{ color: token.colorText }}>
-          <BreadcrumbPlus routes={BreadcrumbRoutes} />
-          <Watermark className="h-full" content={`${user?.id}`}>
-            <Outlet />
-          </Watermark>
-        </Content>
+        <div className="overflow-y-auto px-2 py-1">
+          <Content style={{ color: token.colorText }}>
+            <BreadcrumbPlus routes={BreadcrumbRoutes} />
+            <Watermark className="h-full" content={`${user?.id}`}>
+              <Outlet />
+            </Watermark>
+          </Content>
+        </div>
+
         <Footer className="p-1 text-center text-xs text-gray-400">
           Made with ❤️ by
           <Link target="_blank" to="https://github.com/binghuis/template-react-desktop">
-            {' '}
             @binghuis
           </Link>
         </Footer>
